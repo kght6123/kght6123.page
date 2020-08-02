@@ -19,6 +19,8 @@ $ yarn generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
+## メモ
+
 ```sh
 ~/develop % yarn create nuxt-app kght6123.page
 yarn create v1.19.2
@@ -125,4 +127,55 @@ Firebase ConsoleのHostingを開いて、カスタムドメインを追加をク
 Google Domainsを表示して、ひとつのAレコードにIPアドレス（２つ）を追加する
 
 （カスタムドメインのステータスが「設定が必要です」になっているので、「表示」をクリックするとIPアドレスが表示される）
+
+## AMP Validator
+
+https://validator.amp.dev/#url=https%3A%2F%2Fkght6123.page%2F
+
+## AMP Documentation
+
+https://amp.dev/documentation/?format=websites
+
+## AMP ads
+
+```
+<amp-ad width="300" height="250"
+  type="adsense"
+  data-ad-client="ca-pub-????????"
+  data-ad-slot="???????">
+</amp-ad>
+```
+
+## AMP Access
+
+ログインとかサブスクリプション型のコンテンツとか、支払いとかできるみたい
+https://github.com/ampproject/amphtml/blob/master/extensions/amp-access/amp-access.md
+
+## AMP Form
+
+https://amp.dev/documentation/components/amp-form/
+
+## amp-google-document-embed
+
+https://amp.dev/documentation/components/amp-google-document-embed/
+
+## amp-layout
+
+https://amp.dev/documentation/components/amp-layout/
+
+## amp-live-list
+
+https://amp.dev/documentation/components/amp-live-list/
+
+## amp-next-page
+
+https://amp.dev/documentation/components/amp-next-page/
+
+## amp-pan-zoom
+
+https://amp.dev/documentation/components/amp-pan-zoom/
+
+## amp-recaptcha-input
+
+https://amp.dev/documentation/components/amp-recaptcha-input
 
