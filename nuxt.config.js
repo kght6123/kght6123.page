@@ -83,6 +83,15 @@ export default {
   */
   build: {
   },
+  generate: {
+    async routes () {
+      // Doc: https://content.nuxtjs.org/advanced#static-site-generation
+      const { $content } = require('@nuxt/content')
+      const files = await $content().only(['path']).fetch()
+
+      return files.map(file => file.path === '/index' ? '/content/' : '/content' + file.path)
+    }
+  },
   amp: {
     origin: 'https://kght6123.page/'
   }

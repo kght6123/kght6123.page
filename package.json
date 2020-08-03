@@ -7,7 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "yarn generate && firebase deploy"
+    "deploy": "nuxt generate && firebase deploy",
+    "serve": "nuxt generate && firebase serve --only hosting"
   },
   "dependencies": {
     "@nuxt/content": "^1.5.0",
