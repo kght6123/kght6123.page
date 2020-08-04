@@ -21,7 +21,7 @@
       <amp-body>
         <amp-auto-ads type="adsense" data-ad-client="ca-pub-9175345651644872">
         </amp-auto-ads>
-        <button on="tap:sidebar1">Open Sidebar</button>
+        <button class="bg-red-600 p-4 text-white font-black" on="tap:sidebar1">Open Sidebar</button>
         <amp-sidebar id="sidebar1" layout="nodisplay" side="right">
           <amp-nested-menu layout="fill">
             <ul>

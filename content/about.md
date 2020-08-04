@@ -1,5 +1,5 @@
-<h1>About page</h1>
+# About page
 
 I am the about page, you can edit me in <code>content/about.md</code>
 
-Back to [home](/)
+Back to [home](/content/)

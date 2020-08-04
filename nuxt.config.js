@@ -76,7 +76,18 @@ export default {
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration
   */
-  content: {},
+  content: {
+    markdown: {
+      remarkPlugins: [
+        'remark-squeeze-paragraphs',
+        'remark-slug',
+        /*'remark-autolink-headings',*/
+        ['remark-autolink-headings', { linkProperties: { ariaHidden: true }}],
+        'remark-external-links',
+        'remark-footnotes',
+        '~/plugins/debug-remark-plugin.js']
+    }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -85,7 +96,7 @@ export default {
   },
   generate: {
     async routes () {
-      // Doc: https://content.nuxtjs.org/advanced#static-site-generation
+      // Doc: https://content.nuxtjs.org/advanced#static-site-generation https://content.nuxtjs.org/ja/advanced/#%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90
       const { $content } = require('@nuxt/content')
       const files = await $content().only(['path']).fetch()
 

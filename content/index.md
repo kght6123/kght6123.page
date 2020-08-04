@@ -3,7 +3,7 @@ title: Home
 description: This is my homepage
 ---
 
-<h2>Welcome!</h2>
+## Welcome!
 
 You can edit me in <code>content/index.md</code>
 
