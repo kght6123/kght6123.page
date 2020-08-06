@@ -61,7 +61,21 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    // Doc: https://github.com/nuxt-community/fontawesome-module
+    '@nuxtjs/fontawesome',
   ],
+  /*
+  ** FontAwesome module
+  */
+  fontawesome: {
+    icons: {
+      solid: ['faHome', 'faBars', 'faHouseUser'],
+      regular: [],
+      light: [],
+      duotone: [],
+      brands: []
+    }
+  },
   /*
   ** Nuxt.js modules
   */

@@ -1,3 +1,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+  @apply bg-gray-600 text-white;
+}
+
+amp-social-share {
+  @apply w-full /*!important*/;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
