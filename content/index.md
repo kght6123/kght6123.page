@@ -1,6 +1,8 @@
 ---
 title: Home
 description: This is my homepage
+eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
+thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
 ---
 
 ## Welcome!

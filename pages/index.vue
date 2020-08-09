@@ -201,14 +201,14 @@
             <p class="text-xs">記事の概要</p>
           </article>
         </a>
-        <a class="block shadow-sm" href="http://aaaa">
-          <amp-img src="https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg" layout="responsive" width="799"
+        <nuxt-link v-for="file in files" :key="file.slug" class="block shadow-sm" :to="`/content${file.path}`">
+          <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
         height="534" class="rounded-t-sm"></amp-img>
           <article class="bg-gray-100 text-gray-800 rounded-b-sm p-2">
-            <h2 class="font-medium">記事のタイトル</h2>
-            <p class="text-xs">記事の概要</p>
+            <h2 class="font-medium">{{ file.title }}</h2>
+            <p class="text-xs">{{ file.description }}</p>
           </article>
-        </a>
+        </nuxt-link>
       </nav>
       <aside class="grid grid-cols-3 grid-rows-1 gap-2 p-2 justify-center items-center content-around justify-items-center">
         <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
@@ -622,10 +622,35 @@
 
 <script>
 export default {
+  // async asyncData({ params, $content }) {
+  //   const files = await $content('/', { deep: true }).limit(10).fetch()
+  //   console.log('asyncData files'/*, files*/)
+  //   return { files }
+  // },
+  // activated() {
+  //   // 最後の fetch から30秒以上経っていれば、fetch を呼び出します
+  //   if (this.$fetchState.timestamp <= Date.now() - 3000) {
+  //     this.$fetch()
+  //   }
+  // },
+  async fetch() {
+    // console.log('fetch check', this.$fetchState.timestamp, Date.now() - 3000)
+    // if (this.$fetchState.timestamp <= Date.now() - 3000) {
+      const files = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('updatedAt', 'desc').fetch()
+      console.log('fetch files', files[0], this.$fetchState)
+      this.files = files
+    // }
+  },
+  // fetchOnServer: false,
   amp: 'only',
   head () {
     return {
       title: 'AMP module for Nuxtjs'
+    }
+  },
+  data() {
+    return {
+      files: []
     }
   }
 }
