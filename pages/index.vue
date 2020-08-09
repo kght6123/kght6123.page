@@ -23,7 +23,7 @@
       <amp-sidebar id="menu-sidebar" layout="nodisplay" side="left" class="w-full bg-gray-600">
         <amp-nested-menu layout="fill">
           <ul>
-            <li>
+            <!--li>
               <h4 amp-nested-submenu-open>Open Sub-Menu</h4>
               <div amp-nested-submenu>
                 <ul>
@@ -38,9 +38,14 @@
                   </li>
                 </ul>
               </div>
+            </li-->
+            <li v-for="file in menus" :key="file.slug" class="p-2">
+              <nuxt-link class="block" :to="`/content${file.path}`">
+                {{ file.title }}
+              </nuxt-link>
             </li>
-            <li>
-              <a href="https://amp.dev/">Link</a>
+            <li class="p-2">
+              <a target="_blank" href="https://amp.dev/">Link</a>
             </li>
           </ul>
         </amp-nested-menu>
@@ -201,7 +206,7 @@
             <p class="text-xs">記事の概要</p>
           </article>
         </a>
-        <nuxt-link v-for="file in files" :key="file.slug" class="block shadow-sm" :to="`/content${file.path}`">
+        <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm" :to="`/content${file.path}`">
           <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
         height="534" class="rounded-t-sm"></amp-img>
           <article class="bg-gray-100 text-gray-800 rounded-b-sm p-2">
@@ -636,9 +641,13 @@ export default {
   async fetch() {
     // console.log('fetch check', this.$fetchState.timestamp, Date.now() - 3000)
     // if (this.$fetchState.timestamp <= Date.now() - 3000) {
-      const files = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('updatedAt', 'desc').fetch()
-      console.log('fetch files', files[0], this.$fetchState)
-      this.files = files
+      const newPosts = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('updatedAt', 'desc').fetch()
+      console.log('fetch newPosts', newPosts[0], this.$fetchState)
+      this.newPosts = newPosts
+
+      const menus = await this.$nuxt.context.$content('/', { deep: false }).limit(10).sortBy('createdAt', 'asc').fetch()
+      console.log('fetch menus', menus[0], this.$fetchState)
+      this.menus = menus
     // }
   },
   // fetchOnServer: false,
@@ -650,7 +659,8 @@ export default {
   },
   data() {
     return {
-      files: []
+      newPosts: [],
+      menus: []
     }
   }
 }
