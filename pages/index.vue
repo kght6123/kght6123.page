@@ -75,7 +75,7 @@
         <button class="p-4 font-black" on="tap:menu-sidebar">
           <font-awesome-icon :icon="['fa', 'bars']" />
         </button>
-        <h1 class="font-bold">kght6123.page</h1>
+        <h1 class="text-base font-bold">kght6123.page</h1>
         <button class="p-4 font-black" on="tap:profile-sidebar">
           <font-awesome-icon :icon="['fa', 'house-user']" />
         </button>
@@ -212,7 +212,7 @@
           <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
         height="534" class="rounded-t-sm"></amp-img>
           <article class="bg-gray-100 text-gray-800 rounded-b-sm p-2">
-            <h2 class="font-medium">{{ file.title }}</h2>
+            <h2 class="font-medium text-base">{{ file.title }}</h2>
             <p class="text-xs">{{ file.description }}</p>
           </article>
         </nuxt-link>

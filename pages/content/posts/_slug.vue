@@ -1,9 +1,11 @@
 <template>
   <div>
     <amp-body>
-      <h1>{{ page.title }}</h1>
-      <p>{{ page.description }}</p>
-      <nuxt-content :document="page"/>
+      <div class="p-3">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.description }}</p>
+        <nuxt-content :document="page"/>
+      </div>
     </amp-body>
   </div>
 </template>
