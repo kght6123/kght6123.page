@@ -1,12 +1,19 @@
 ---
-title: About
-description: This is my about.
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
+title: このサイトについて
+description: このサイトの紹介、免責事項など
+eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/gorimepresetV1A_TP_V4.jpg
+thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/gorimepresetV1A_TP_V4.jpg
 ---
 
-# About page
+このブログは、三重県四日市市に住むガジェット好きのWeb系エンジニアが、
 
-I am the about page, you can edit me in <code>content/about.md</code>
+名刺の変わりに、今後の仕事や社会貢献に繋げるため、技術的な手法の紹介を行っています。
 
-Back to [home](/content/)
+記載しているソースコードについては、自由に利用していただいて活用していただければ幸いですが、
+
+如何なる不利益が発生した場合も保証できません。
+
+ただし、コメントとしてお寄せ頂ければ、対応は可能かもしれません。
+
+また、愛兎の写真は無断転載・商用利用は厳禁です。私的利用に関しては制限しません。
+

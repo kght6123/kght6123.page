@@ -45,7 +45,7 @@
               </nuxt-link>
             </li>
             <li class="p-2">
-              <a target="_blank" href="https://amp.dev/">Link</a>
+              <a target="_blank" href="https://amp.dev/">amp.dev（外部リンク）</a>
             </li>
           </ul>
         </amp-nested-menu>
@@ -88,12 +88,13 @@
         layout="responsive"
         type="slides"
       >
-        <amp-img src="https://www.pakutaso.com/shared/img/thumb/RDS20719B006_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
-        <amp-img src="https://www.pakutaso.com/shared/img/thumb/RDS20719B005_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
-        <amp-img src="https://www.pakutaso.com/shared/img/thumb/RD2020322F033_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
+        <amp-img src="https://www.pakutaso.com/shared/img/thumb/bobjinno7050165_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
+        <amp-img src="https://www.pakutaso.com/shared/img/thumb/BOBSC2054_5_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
+        <amp-img src="https://www.pakutaso.com/shared/img/thumb/BOB20614B002_TP_V4.jpg" layout="responsive" width="768" height="512"></amp-img>
       </amp-carousel>
 
       <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-2">
+        <!--
         <a class="block shadow-sm" href="http://aaaa">
           <amp-img src="https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg" layout="responsive" width="799"
         height="534" class="rounded-t-sm"></amp-img>
@@ -206,6 +207,7 @@
             <p class="text-xs">記事の概要</p>
           </article>
         </a>
+        -->
         <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm" :to="`/content${file.path}`">
           <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
         height="534" class="rounded-t-sm"></amp-img>

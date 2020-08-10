@@ -3,7 +3,15 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply bg-gray-600 text-white;
+  @apply bg-gray-600 text-white p-4;
+}
+
+h1 {
+  @apply text-2xl font-black;
+}
+
+h2 {
+  @apply text-xl font-black;
 }
 
 amp-social-share {
