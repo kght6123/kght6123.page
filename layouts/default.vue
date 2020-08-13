@@ -1,5 +1,88 @@
 <template>
-  <div>
+  <amp-body>
+    <amp-sidebar id="menu-sidebar" layout="nodisplay" side="left" class="w-full bg-gray-600">
+      <amp-nested-menu layout="fill">
+        <ul>
+          <!--li>
+            <h4 amp-nested-submenu-open>Open Sub-Menu</h4>
+            <div amp-nested-submenu>
+              <ul>
+                <li>
+                  <h4 amp-nested-submenu-close>Go back</h4>
+                </li>
+                <li>
+                  <h4 amp-nested-submenu-open>Open Another Sub-Menu</h4>
+                  <div amp-nested-submenu>
+                    <h4 amp-nested-submenu-close>Go back</h4>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li-->
+          <li v-for="file in menus" :key="file.slug" class="p-2">
+            <nuxt-link class="block" :to="`${file.path}`">
+              {{ file.title }}
+            </nuxt-link>
+          </li>
+          <li class="p-2">
+            <a target="_blank" href="https://amp.dev/">amp.dev（外部リンク）</a>
+          </li>
+        </ul>
+      </amp-nested-menu>
+    </amp-sidebar>
+    <amp-sidebar id="profile-sidebar" layout="nodisplay" side="right" class="w-full bg-gray-600">
+      <article>
+        <header>
+          <h1>about</h1>
+        </header>
+        <section>
+          <h2>Message</h2>
+          <p>本文・・・</p>
+          <h2>About Me</h2>
+          <p>本文・・・</p>
+          <h2>Twitter</h2>
+          <p>本文・・・</p>
+          <h2>Github</h2>
+          <p>本文・・・</p>
+        </section>
+      </article>
+    </amp-sidebar>
+
+    <!--amp-auto-ads type="adsense" data-ad-client="ca-pub-9175345651644872">
+    </amp-auto-ads-->
+
+    <header class="flex flex-row flex-no-wrap justify-between items-center content-center">
+      <button class="p-4 font-black" on="tap:menu-sidebar">
+        <font-awesome-icon :icon="['fa', 'bars']" />
+      </button>
+      <nuxt-link to="/">
+        <h1 class="text-base font-bold">kght6123.page</h1>
+      </nuxt-link>
+      <button class="p-4 font-black" on="tap:profile-sidebar">
+        <font-awesome-icon :icon="['fa', 'house-user']" />
+      </button>
+    </header>
     <Nuxt />
-  </div>
+    <aside class="grid grid-cols-3 grid-rows-1 gap-2 p-2 justify-center items-center content-around justify-items-center">
+      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
+      <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
+      <amp-social-share type="line" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
+      <amp-social-share type="system" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
+    </aside>
+  </amp-body>
 </template>
+
+<script>
+export default {
+  async fetch() {
+    const menus = await this.$nuxt.context.$content('/', { deep: false }).limit(10).sortBy('createdAt', 'asc').fetch()
+    console.log('fetch menus', menus[0], this.$fetchState)
+    this.menus = menus
+  },
+  data() {
+    return {
+      menus: []
+    }
+  }
+}
+</script>

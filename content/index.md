@@ -5,7 +5,7 @@ eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/PAK76_chikyuugitobin
 thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/PAK76_chikyuugitobin20130804_TP_V4.jpg
 ---
 
-- [Top](/content/profile)
-- [About](/content/about)
-- [Privacy Policy](/content/privacy-policy)
-- [Profile](/content/profile)
+- [Top](/profile)
+- [About](/about)
+- [Privacy Policy](/privacy-policy)
+- [Profile](/profile)
