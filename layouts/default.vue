@@ -74,10 +74,10 @@
     </header>
     <Nuxt />
     <aside class="grid grid-cols-3 grid-rows-1 gap-2 p-2 justify-center items-center content-around justify-items-center">
-      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
+      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
       <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
-      <amp-social-share type="line" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
-      <amp-social-share type="system" class="w-full bg-gray-600 rounded-sm"></amp-social-share>
+      <amp-social-share type="line" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
+      <amp-social-share type="system" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
     </aside>
   </amp-body>
 </template>

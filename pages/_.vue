@@ -1,6 +1,6 @@
 <template>
   <article class="p-8" v-if="page">
-    <h1>{{ page.title }}</h1>
+    <h1 class="post-title">{{ page.title }}</h1>
     <amp-timeago
       class="text-xxs text-right pr-2 pb-1"
       layout="responsive"
@@ -12,13 +12,13 @@
       {{ page.updatedAt }}
     </amp-timeago>
     <ul>
-      <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xxs">
+      <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs">
         <nuxt-link to="/" itemprop="url">
           <font-awesome-icon :icon="['fa', 'home']" />
           <span itemprop="title">ホーム</span>
         </nuxt-link>
       </li>
-      <li v-for="parentPath in parentPathList" :key="parentPath.path" itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xxs pr-1">
+      <li v-for="parentPath in parentPathList" :key="parentPath.path" itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs pr-1">
         <font-awesome-icon :icon="['fa', 'angle-right']" />
         <nuxt-link :to="`/${parentPath.path}`" itemprop="url">
           <span itemprop="title">{{ parentPath.name }}</span>
@@ -30,23 +30,26 @@
     <!-- FIXME:カテゴリやタグごとのインデックスページを入れたい -->
     <p>{{ page.description }}</p>
     <div v-if="Object.keys(page.toc).length > 1" class="p-4 my-4 rounded-lg bg-gray-700">
-      <ul class="text-xs">
+      <ul class="text-sm">
         <li
           v-for="link of page.toc"
           :key="link.id"
           :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
-          class="p-1"
+          class="p-2"
         >
-          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+          <NuxtLink :to="`#${link.id}`" class="block">{{ link.text }}</NuxtLink>
         </li>
       </ul>
     </div>
     <nuxt-content :document="page"/>
-    <div class="text-xxs grid justify-between grid-cols-2 mt-8">
+    <div class="text-xs grid justify-between grid-cols-3 mt-8">
       <NuxtLink v-if="prev" :to="`${prev.path}`" class="block">
         前の記事へ<br />（{{ prev.title }}）
       </NuxtLink>
       <span v-if="!prev"></span>
+      <NuxtLink to="/" class="block text-center text-lg">
+        <font-awesome-icon :icon="['fa', 'home']" />
+      </NuxtLink>
       <NuxtLink v-if="next" :to="`${next.path}`" class="block text-right">
         次の記事へ<br />（{{ next.title }}）
       </NuxtLink>

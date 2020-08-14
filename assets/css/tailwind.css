@@ -6,25 +6,46 @@ body {
   @apply bg-gray-600 text-white;
 }
 
-/* .nuxt-content h1 { */
-
+.nuxt-content {
+  line-height: 1.85;
+}
+.nuxt-content p {
+  @apply my-4;
+}
+h1.post-title {
+  @apply mt-0;
+}
+h1.post-title:first-letter {
+  @apply text-6xl text-gray-100;
+}
+.nuxt-content h2 {
+  @apply border-gray-200 px-2;
+  border-left: solid 5px;
+}
+.nuxt-content h3 {
+  @apply border-gray-200;
+  border-bottom: dashed 2px;
+}
+.toc3 {
+  @apply pl-8;
+}
 h1, h2, h3, h4, h5 {
   @apply font-black;
 }
 h1 {
-  @apply text-2xl pb-3 pt-5;
+  @apply text-2xl mb-3 mt-6;
 }
 h2 {
-  @apply text-xl pb-2 pt-4;
+  @apply text-xl mb-2 mt-5;
 }
 h3 {
-  @apply text-lg pb-1 pt-3;
+  @apply text-lg mb-1 mt-4;
 }
 h4 {
-  @apply text-base;
+  @apply text-base mt-3;
 }
 h5 {
-  @apply text-sm;
+  @apply text-sm mt-2;
 }
 p {
   @apply my-2;
