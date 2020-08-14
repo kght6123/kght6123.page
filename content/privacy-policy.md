@@ -5,10 +5,6 @@ eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/5G1449_TP_V4.jpg
 thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/5G1449_TP_V4.jpg
 ---
 
-2020年 8月10日
-
-古賀 広隆
-
 ### 当サイトに掲載されている広告について
 
 当サイトでは、第三者配信の広告サービス（Google Adsense グーグルアドセンス）を利用しています。

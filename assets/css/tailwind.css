@@ -6,16 +6,31 @@ body {
   @apply bg-gray-600 text-white;
 }
 
+/* .nuxt-content h1 { */
+
+h1, h2, h3, h4, h5 {
+  @apply font-black;
+}
 h1 {
-  @apply text-2xl font-black;
+  @apply text-2xl pb-3 pt-5;
 }
-
 h2 {
-  @apply text-xl font-black;
+  @apply text-xl pb-2 pt-4;
 }
-
+h3 {
+  @apply text-lg pb-1 pt-3;
+}
+h4 {
+  @apply text-base;
+}
+h5 {
+  @apply text-sm;
+}
 p {
   @apply my-2;
+}
+a {
+  @apply underline;
 }
 
 amp-social-share {

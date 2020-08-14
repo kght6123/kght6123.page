@@ -19,6 +19,16 @@
               </ul>
             </div>
           </li-->
+          <!--
+          <li class="p-2">
+            <input v-model="query" type="search" class="block text-gray-200 bg-gray-700 rounded-full" autocomplete="off" @input="search" />
+            <ul v-if="contents.length">
+              <li v-for="content of contents" :key="content.slug">
+                <NuxtLink :to="`${content.path}`" class="block">{{ content.title }}</NuxtLink>
+              </li>
+            </ul>
+          </li>
+          -->
           <li v-for="file in menus" :key="file.slug" class="p-2">
             <nuxt-link class="block" :to="`${file.path}`">
               {{ file.title }}
@@ -55,7 +65,7 @@
       <button class="p-4 font-black" on="tap:menu-sidebar">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </button>
-      <nuxt-link to="/">
+      <nuxt-link to="/" class="no-underline">
         <h1 class="text-base font-bold">kght6123.page</h1>
       </nuxt-link>
       <button class="p-4 font-black" on="tap:profile-sidebar">
@@ -76,13 +86,30 @@
 export default {
   async fetch() {
     const menus = await this.$nuxt.context.$content('/', { deep: false }).limit(10).sortBy('createdAt', 'asc').fetch()
-    console.log('fetch menus', menus[0], this.$fetchState)
+    // console.log('fetch menus', menus[0], this.$fetchState)
     this.menus = menus
   },
   data() {
     return {
-      menus: []
+      menus: [],
+      // query: '',
+      // contents: []
     }
+  },
+  methods: {
+    // async search({ target }) {
+    //   console.log('watch', target.value)
+    //   if (!target.value) {
+    //     this.contents = []
+    //     return
+    //   }
+    //   this.contents = await this.$content('/', { deep: true })
+    //     .only(['title', 'slug'])
+    //     .sortBy('updatedAt', 'desc')
+    //     .limit(12)
+    //     .search(target.value)
+    //     .fetch()
+    // }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <article class="p-8">
+  <article class="p-8" v-if="page">
     <h1>{{ page.title }}</h1>
     <amp-timeago
       class="text-xxs text-right pr-2 pb-1"
@@ -27,8 +27,31 @@
     </ul>
     <!-- FIXME:タグ管理を入れたい -->
     <!-- FIXME:もくじを入れたい -->
+    <!-- FIXME:カテゴリやタグごとのインデックスページを入れたい -->
     <p>{{ page.description }}</p>
+    <div v-if="Object.keys(page.toc).length > 1" class="p-4 my-4 rounded-lg bg-gray-700">
+      <ul class="text-xs">
+        <li
+          v-for="link of page.toc"
+          :key="link.id"
+          :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
+          class="p-1"
+        >
+          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+        </li>
+      </ul>
+    </div>
     <nuxt-content :document="page"/>
+    <div class="text-xxs grid justify-between grid-cols-2 mt-8">
+      <NuxtLink v-if="prev" :to="`${prev.path}`" class="block">
+        前の記事へ<br />（{{ prev.title }}）
+      </NuxtLink>
+      <span v-if="!prev"></span>
+      <NuxtLink v-if="next" :to="`${next.path}`" class="block text-right">
+        次の記事へ<br />（{{ next.title }}）
+      </NuxtLink>
+      <span v-if="!next"></span>
+    </div>
   </article>
 </template>
 
@@ -53,14 +76,41 @@ export default {
     // console.log(`post`, page)
     // this.page = page
     // console.log(pathMatch.split('/'))
-    return {
+    // console.log('slug', page.slug)
+    // パスを分解する
+    const paths = pathMatch.split('/')
+    // 親のパスリストを作る（パンくずと次へと前へのページのため）
+    const parentPathList = paths.map((name, idx, array) => ({ path: array.slice(0, idx + 1).join('/'), name }))
+    // 次や前のページ情報を取得するためのパスを取得する
+    console.log(`next prev page path`, parentPathList[parentPathList.length - 2])
+    const nextAndPrevPagePath = parentPathList.length > 1 ? parentPathList[parentPathList.length - 2].path : '/'
+    console.log('nextAndPrevPagePath', nextAndPrevPagePath)
+    // 次や前のページ情報を取得する
+    const [prev, next] = await $content(nextAndPrevPagePath, { deep: false })
+      // .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(paths[paths.length - 1])
+      .fetch()
+    console.log('result', {
       page,
-      parentPathList: pathMatch.split('/').map((name, idx, array) => ({ path: array.slice(0, idx + 1).join('/'), name }))
+      parentPathList,
+      prev,
+      next,
+    })
+    // データを返す
+    return {
+      page: page && page.length > 0 ? page[0] : page, // FIXME:pageが配列の時の暫定対応
+      parentPathList,
+      prev,
+      next,
     }
   },
   data() {
     return {
-      page: {}
+      page: {},
+      parentPathList: [],
+      prev: {},
+      next: {},
     }
   }
 };

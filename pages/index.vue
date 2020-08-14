@@ -14,7 +14,7 @@
     </amp-carousel>
 
     <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-2">
-      <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative" :to="`${file.path}`">
+      <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative pb-6" :to="`${file.path}`">
         <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
       height="534" class="block rounded-t-sm"></amp-img>
         <article class="block rounded-b-sm p-2">
