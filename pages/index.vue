@@ -13,6 +13,14 @@
       <amp-img src="https://www.pakutaso.com/shared/img/thumb/BOB20614B002_TP_V4.jpg" layout="responsive" width="800" height="600"></amp-img>
     </amp-carousel>
 
+    <ul v-if="tags" class="pt-2">
+      <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
+        <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+          {{ tag }}
+        </nuxt-link>
+      </li>
+    </ul>
+
     <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-2">
       <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative pb-6" :to="`${file.path}`">
         <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
@@ -39,9 +47,20 @@
 <script>
 export default {
   async fetch() {
+    // ページ一覧を取得する
     const newPosts = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('updatedAt', 'desc').fetch()
     // console.log('fetch newPosts', newPosts[0], this.$fetchState)
     this.newPosts = newPosts
+    // ページ一覧から全タグの一覧を作成する
+    const tagOnlyPages = await this.$nuxt.context.$content('/', { deep: true })
+      .only(['tags'])
+      .fetch()
+      .catch(err => {
+        error({ statusCode: 404, message: "Page not found" })
+      })
+    this.tags = tagOnlyPages.flatMap(
+      tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
+    )
   },
   amp: 'only',
   head () {
@@ -51,7 +70,8 @@ export default {
   },
   data() {
     return {
-      newPosts: []
+      newPosts: [],
+      tags: []
     }
   }
 }

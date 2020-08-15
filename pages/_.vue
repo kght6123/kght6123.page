@@ -1,64 +1,110 @@
 <template>
-  <article class="p-8" v-if="page">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <amp-timeago
-      class="text-xxs text-right pr-2 pb-1"
-      layout="responsive"
-      width="160"
-      height="20"
-      :datetime="page.updatedAt"
-      locale="ja"
-    >
-      {{ page.updatedAt }}
-    </amp-timeago>
-    <ul>
-      <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs">
-        <nuxt-link to="/" itemprop="url">
-          <font-awesome-icon :icon="['fa', 'home']" />
-          <span itemprop="title">ホーム</span>
-        </nuxt-link>
-      </li>
-      <li v-for="parentPath in parentPathList" :key="parentPath.path" itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs pr-1">
-        <font-awesome-icon :icon="['fa', 'angle-right']" />
-        <nuxt-link :to="`/${parentPath.path}`" itemprop="url">
-          <span itemprop="title">{{ parentPath.name }}</span>
-        </nuxt-link>
-      </li>
-    </ul>
-    <!-- FIXME:タグ管理を入れたい -->
-    <!-- FIXME:もくじを入れたい -->
-    <!-- FIXME:カテゴリやタグごとのインデックスページを入れたい -->
-    <p>{{ page.description }}</p>
-    <div v-if="Object.keys(page.toc).length > 1" class="p-4 my-4 rounded-lg bg-gray-700">
-      <ul class="text-sm">
-        <li
-          v-for="link of page.toc"
-          :key="link.id"
-          :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
-          class="p-2"
-        >
-          <NuxtLink :to="`#${link.id}`" class="block">{{ link.text }}</NuxtLink>
+  <main>
+    <article class="p-8" v-if="isPageListView === true">
+      <!-- 記事リストのとき -->
+      <h1 class="mt-2">{{ category }}</h1>
+      <ul v-if="tags">
+        <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
+          <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+            {{ tag }}
+          </nuxt-link>
         </li>
       </ul>
-    </div>
-    <nuxt-content :document="page"/>
-    <div class="text-xs grid justify-between grid-cols-3 mt-8">
-      <NuxtLink v-if="prev" :to="`${prev.path}`" class="block">
-        前の記事へ<br />（{{ prev.title }}）
-      </NuxtLink>
-      <span v-if="!prev"></span>
-      <NuxtLink to="/" class="block text-center text-lg">
-        <font-awesome-icon :icon="['fa', 'home']" />
-      </NuxtLink>
-      <NuxtLink v-if="next" :to="`${next.path}`" class="block text-right">
-        次の記事へ<br />（{{ next.title }}）
-      </NuxtLink>
-      <span v-if="!next"></span>
-    </div>
-  </article>
+      <ol v-if="pages" class="p-4 my-4 rounded-lg bg-gray-700">
+        <li v-for="page in pages" :key="page.slug">
+          <nuxt-link class="block pb-2" :to="`${page.path}`">
+            {{ page.title }}
+            <amp-timeago
+              class="text-xxs align-text-bottom"
+              layout="fixed"
+              :datetime="page.updatedAt"
+              width="56"
+              height="16"
+              locale="ja"
+            >
+              {{ page.updatedAt }}
+            </amp-timeago>
+          </nuxt-link>
+        </li>
+      </ol>
+    </article>
+    <article class="p-8" v-if="isPageListView === false">
+      <!-- 記事のとき -->
+      <h1 class="post-title">{{ page.title }}</h1>
+      <amp-timeago
+        class="text-xxs text-right pr-2 pb-1"
+        layout="responsive"
+        width="160"
+        height="20"
+        :datetime="page.updatedAt"
+        locale="ja"
+      >
+        {{ page.updatedAt }}
+      </amp-timeago>
+      <ul>
+        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs">
+          <nuxt-link to="/" itemprop="url">
+            <font-awesome-icon :icon="['fa', 'home']" />
+            <span itemprop="title">ホーム</span>
+          </nuxt-link>
+        </li>
+        <li v-for="parentPath in parentPathList" :key="parentPath.path" itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs pr-1">
+          <font-awesome-icon :icon="['fa', 'angle-right']" />
+          <nuxt-link :to="`/${parentPath.path}`" itemprop="url">
+            <span itemprop="title">{{ parentPath.name }}</span>
+          </nuxt-link>
+        </li>
+      </ul>
+      <p>{{ page.description }}</p>
+      <ul v-if="page.tags">
+        <li v-for="tag in page.tags" :key="tag" class="inline-block text-xs pr-1">
+          <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+            {{ tag }}
+          </nuxt-link>
+        </li>
+      </ul>
+      <div v-if="Object.keys(page.toc).length > 1" class="p-4 my-4 rounded-lg bg-gray-700">
+        <ul class="text-sm">
+          <li
+            v-for="link of page.toc"
+            :key="link.id"
+            :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
+            class="p-2"
+          >
+            <NuxtLink :to="`#${link.id}`" class="block">{{ link.text }}</NuxtLink>
+          </li>
+        </ul>
+      </div>
+      <nuxt-content :document="page"/>
+      <div v-if="tags" class="mt-8">
+        <h5 class="text-xs">関連タグ</h5>
+        <ul>
+          <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
+            <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+              {{ tag }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <div class="text-xs grid justify-between grid-cols-3 mt-8">
+        <NuxtLink v-if="prev" :to="`${prev.path}`" class="block">
+          前の記事へ<br />（{{ prev.title }}）
+        </NuxtLink>
+        <span v-if="!prev"></span>
+        <NuxtLink to="/" class="block text-center text-lg">
+          <font-awesome-icon :icon="['fa', 'home']" />
+        </NuxtLink>
+        <NuxtLink v-if="next" :to="`${next.path}`" class="block text-right">
+          次の記事へ<br />（{{ next.title }}）
+        </NuxtLink>
+        <span v-if="!next"></span>
+      </div>
+    </article>
+  </main>
 </template>
 
 <script>
+
 export default {
   amp: 'only',
   head () {
@@ -67,54 +113,121 @@ export default {
     }
   },
   async asyncData({ $content, params, error }) {
-  // async fetch() {
-    // console.log(`params`, params)
     const pathMatch = params.pathMatch || "index"
-    // console.log('pathMatch', pathMatch)
-    const page = await /*this.$nuxt.context.*/ $content(pathMatch)
-      .fetch()
-      .catch(err => {
-        error({ statusCode: 404, message: "Page not found" })
-      })
-    // console.log(`post`, page)
-    // this.page = page
-    // console.log(pathMatch.split('/'))
-    // console.log('slug', page.slug)
     // パスを分解する
     const paths = pathMatch.split('/')
-    // 親のパスリストを作る（パンくずと次へと前へのページのため）
+    const currentPath = paths[paths.length - 1]
+    // ページの種別を取得する
+    const category = paths.length > 0 ? paths[0] : 'index'
+    // 親のパスリストを作る（パンくずと次へと前へのページ、関連タグのため）
     const parentPathList = paths.map((name, idx, array) => ({ path: array.slice(0, idx + 1).join('/'), name }))
     // 次や前のページ情報を取得するためのパスを取得する
-    console.log(`next prev page path`, parentPathList[parentPathList.length - 2])
     const nextAndPrevPagePath = parentPathList.length > 1 ? parentPathList[parentPathList.length - 2].path : '/'
-    console.log('nextAndPrevPagePath', nextAndPrevPagePath)
-    // 次や前のページ情報を取得する
-    const [prev, next] = await $content(nextAndPrevPagePath, { deep: false })
-      // .only(['title', 'slug'])
-      .sortBy('createdAt', 'asc')
-      .surround(paths[paths.length - 1])
-      .fetch()
-    console.log('result', {
-      page,
-      parentPathList,
-      prev,
-      next,
-    })
-    // データを返す
-    return {
-      page: page && page.length > 0 ? page[0] : page, // FIXME:pageが配列の時の暫定対応
-      parentPathList,
-      prev,
-      next,
+    // 一覧で表示するか判定する
+    let isPageListView, isTagListView = false
+    // ページ種別毎にページの取得処理を変える
+    let page, tags = null
+    switch (category){
+      case 'tags':
+        // 常に一覧表示にする
+        isPageListView = true
+        // タグ一覧表示にするか？
+        isTagListView = paths.length < 2
+        if (isTagListView) {
+          // ページ一覧から全タグの一覧を作成する
+          const tagOnlyPages = await $content('/', { deep: true })
+            .only(['tags'])
+            .fetch()
+            .catch(err => {
+              error({ statusCode: 404, message: "Page not found" })
+            })
+          tags = tagOnlyPages.flatMap(
+            tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
+          )
+          // console.log('tags', tags, tagOnlyPages)
+        } else {
+          // タグに紐づくページ一覧を取得する
+          page = await $content('/', { deep: true })
+            .where({ 'tags': { $contains: paths[1] } })
+            .sortBy('updatedAt', 'desc')
+            .fetch()
+            .catch(err => {
+              error({ statusCode: 404, message: "Page not found" })
+            })
+        }
+        break
+      case 'posts':
+        // 一覧で表示するか判定する
+        isPageListView = paths.length < 2
+        // ページを取得する
+        page = await $content(pathMatch)
+          .fetch()
+          .catch(err => {
+            error({ statusCode: 404, message: "Page not found" })
+          })
+        // 親ページ一覧から関連タグの一覧を作成する
+        const tagOnlyParentPages = await $content(nextAndPrevPagePath, { deep: true })
+          .only(['tags'])
+          .fetch()
+          .catch(err => {
+            error({ statusCode: 404, message: "Page not found" })
+          })
+        tags = tagOnlyParentPages.flatMap(
+          tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
+        )
+        break
+      default:
+        // 常に投稿で表示する
+        isPageListView = false
+        // ページを取得する
+        page = await $content(pathMatch)
+          .fetch()
+          .catch(err => {
+            error({ statusCode: 404, message: "Page not found" })
+          })
+        break
+    }
+    // 一覧表示ではないとき
+    if (isPageListView === false) {
+      // 次や前のページ情報を取得する
+      const [prev, next] = await $content(nextAndPrevPagePath, { deep: false })
+        // .only(['title', 'slug'])
+        .sortBy('createdAt', 'asc')
+        .surround(currentPath)
+        .fetch()
+      // データを返す
+      return {
+        category,
+        tags,
+        isPageListView,
+        isTagListView,
+        page,
+        parentPathList,
+        prev,
+        next
+      }
+    } else {
+      // データを返す
+      return {
+        category,
+        tags,
+        isPageListView,
+        isTagListView,
+        pages: page,
+        parentPathList
+      }
     }
   },
   data() {
     return {
+      category: '',
+      isPageListView: false,
       page: {},
       parentPathList: [],
       prev: {},
       next: {},
     }
-  }
+  },
+  methods: {}
 };
 </script>

@@ -19,6 +19,15 @@ $ yarn generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
+## Road Map
+
+- [ ] 画像の差し替えとHostingへ追加
+- [ ] プロフィールページの作成
+- [ ] 過去記事（Markdown）を移行
+- [ ] Googleアナリティクスを設定
+- [ ] Adsを設定
+- [ ] 全文検索をできるようにする？？（非AMP）
+
 ## メモ
 
 ```sh

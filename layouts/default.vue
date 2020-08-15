@@ -35,6 +35,11 @@
             </nuxt-link>
           </li>
           <li class="p-2">
+            <nuxt-link class="block" to="/tags">
+              投稿タグの一覧
+            </nuxt-link>
+          </li>
+          <li class="p-2">
             <a target="_blank" href="https://amp.dev/">amp.dev（外部リンク）</a>
           </li>
         </ul>
@@ -73,11 +78,11 @@
       </button>
     </header>
     <Nuxt />
-    <aside class="grid grid-cols-3 grid-rows-1 gap-2 p-2 justify-center items-center content-around justify-items-center">
-      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
+    <aside class="grid grid-cols-3 grid-rows-1 gap-6 p-2 mx-6 justify-center items-center content-around justify-items-center">
+      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
       <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
-      <amp-social-share type="line" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
-      <amp-social-share type="system" class="w-full bg-gray-600 rounded-sm" layout="fixed" width="35" height="35"></amp-social-share>
+      <amp-social-share type="line" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
+      <amp-social-share type="system" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
     </aside>
   </amp-body>
 </template>

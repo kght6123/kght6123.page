@@ -23,7 +23,7 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { hid: '', name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
       { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
       { hid: 'og:site_name', property: 'og:site_name', content: process.env.npm_package_name || '' },
@@ -91,6 +91,7 @@ export default {
   ** See https://content.nuxtjs.org/configuration
   */
   content: {
+    // nestedProperties: ['tags'],
     markdown: {
       remarkPlugins: [
         'remark-squeeze-paragraphs',
