@@ -64,7 +64,7 @@ export default {
   amp: 'only',
   head () {
     return {
-      title: 'kght6123.page'
+      // title: 'kght6123.page'
     }
   },
   data() {

@@ -71,7 +71,7 @@
         <font-awesome-icon :icon="['fa', 'bars']" />
       </button>
       <nuxt-link to="/" class="no-underline">
-        <h1 class="text-base font-bold">kght6123.page</h1>
+        <h1 class="text-base font-bold mt-3">kght6123.page</h1>
       </nuxt-link>
       <button class="p-4 font-black" on="tap:profile-sidebar">
         <font-awesome-icon :icon="['fa', 'house-user']" />

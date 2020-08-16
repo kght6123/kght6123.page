@@ -23,9 +23,10 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 - [x] 画像の差し替えとHostingへ追加
 - [x] アイキャッチ画像の表示
-- [ ] 全体のmetaタグの見直しとページ別の設定
+- [x] 全体のmetaタグの見直しとページ別の設定
 - [ ] プロフィールページの作成
 - [ ] 過去記事（Markdown）を移行
+- [ ] ストラクチャードデータに対応 https://developers.google.com/search/docs/data-types/article
 - [ ] Googleアナリティクスを設定
 - [ ] Adsを設定
 - [ ] 全文検索をできるようにする？？（非AMP）

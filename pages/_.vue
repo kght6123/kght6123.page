@@ -2,7 +2,7 @@
   <main>
     <article class="p-8" v-if="isPageListView === true">
       <!-- 記事リストのとき -->
-      <h1 class="mt-2">{{ category }}</h1>
+      <h1 class="mt-2">{{ `${tagName} タグの付いた記事一覧` || `${category} カテゴリの記事一覧` }}</h1>
       <ul v-if="tags">
         <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
           <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
@@ -31,7 +31,7 @@
     <article class="p-8" v-if="isPageListView === false">
       <!-- 記事のとき -->
       <div class="overflow-hidden h-32 flex justify-center items-center content-center">
-        <amp-img v-if="page.eyecatchImageUrl" :src="page.eyecatchImage[0]" layout="intrinsic" :width="page.eyecatchImage[1]" :height="page.eyecatchImage[2]" class="block"></amp-img>
+        <amp-img v-if="page.eyecatchImage" :src="page.eyecatchImage[0]" layout="intrinsic" :width="page.eyecatchImage[1]" :height="page.eyecatchImage[2]" class="block"></amp-img>
       </div>
       <h1 class="post-title">{{ page.title }}</h1>
       <amp-timeago
@@ -112,11 +112,11 @@
 
 export default {
   amp: 'only',
-  head () {
-    return {
-      title: this.page.title
-    }
-  },
+  // head () {
+  //   return {
+  //     title: this.page.title
+  //   }
+  // },
   async asyncData({ $content, params, error }) {
     const pathMatch = params.pathMatch || "index"
     // パスを分解する
@@ -131,7 +131,7 @@ export default {
     // 一覧で表示するか判定する
     let isPageListView, isTagListView = false
     // ページ種別毎にページの取得処理を変える
-    let page, tags = null
+    let page, tags, tagName = null
     switch (category){
       case 'tags':
         // 常に一覧表示にする
@@ -152,8 +152,9 @@ export default {
           // console.log('tags', tags, tagOnlyPages)
         } else {
           // タグに紐づくページ一覧を取得する
+          tagName = paths[1]
           page = await $content('/', { deep: true })
-            .where({ 'tags': { $contains: paths[1] } })
+            .where({ 'tags': { $contains: tagName } })
             .sortBy('updatedAt', 'desc')
             .fetch()
             .catch(err => {
@@ -215,6 +216,7 @@ export default {
       // データを返す
       return {
         category,
+        tagName,
         tags,
         isPageListView,
         isTagListView,
@@ -226,11 +228,42 @@ export default {
   data() {
     return {
       category: '',
+      tagName: '',
+      tags: [],
       isPageListView: false,
+      isTagListView: false,
       page: {},
+      pages: [],
       parentPathList: [],
       prev: {},
       next: {},
+    }
+  },
+  head() {
+    return {
+      title: this.page.title ? this.page.title : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.description ? this.page.description : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.page.title ? this.page.title : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.page.description ? this.page.description : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.page.eyecatchImage ? this.page.eyecatchImage[0] : '/images/top1.jpg'
+        },
+      ]
     }
   },
   methods: {}

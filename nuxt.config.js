@@ -20,23 +20,23 @@ export default {
       prefix: 'og: http://ogp.me/ns#'
     },
     titleTemplate: '%s - kght6123.page',
-    title: process.env.npm_package_name || '',
+    title: 'げぐはつぺーじ',
     meta: [
       { charset: 'utf-8' },
       { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { hid: 'description', name: 'description', content: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。' },
       { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
-      { hid: 'og:site_name', property: 'og:site_name', content: process.env.npm_package_name || '' },
-      { hid: 'og:type', property: 'og:type', content: 'article' },
-      { hid: 'og:title', property: 'og:title', content: process.env.npm_package_name || '', },
-      { hid: 'og:description', property: 'og:description', content: process.env.npm_package_description || '' },
-      { hid: 'og:image', property: 'og:image', content: '/icon.png' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'げぐはつぺじ' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:title', property: 'og:title', content: 'げぐはつぺじ', },
+      { hid: 'og:description', property: 'og:description', content: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。' },
+      { hid: 'og:image', property: 'og:image', content: '/images/top1.jpg' },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kght6123' },
       { hid: 'twitter:creator', name: 'twitter:creator', content: '@kght6123' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
   /*
@@ -122,5 +122,20 @@ export default {
   },
   amp: {
     origin: 'https://kght6123.page/'
+  },
+  pwa: {
+    // Doc: https://pwa.nuxtjs.org/meta
+    meta: {
+      name: 'げぐはつぺじ',
+      author: 'kght6123',
+      description: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。',
+      lang: 'ja',
+      nativeUI: true,
+    },
+    manifest: {
+      name: 'げぐはつぺじ',
+      short_name: 'げぐはつぺじ',
+      lang: 'ja',
+    }
   }
 }
