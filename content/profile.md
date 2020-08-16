@@ -1,8 +1,8 @@
 ---
 title: プロフィール
 description: 'サイト管理者のプロフィールです。'
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/gori0I9A3105072103338_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/gori0I9A3105072103338_TP_V4.jpg
+eyecatchImage: ['/images/profile.jpg',800,540]
+thumbnailImage: ['/images/profile.jpg',800,540]
 ---
 
 ## PROFILE

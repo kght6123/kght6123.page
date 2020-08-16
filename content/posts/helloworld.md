@@ -1,8 +1,8 @@
 ---
 title: Hello World!!!
 description: 'Test post'
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/redstymtA018_TP_V4.jpg
+eyecatchImage: ['/images/posts/helloworld.jpg',799,534]
+thumbnailImage: ['/images/posts/helloworld.jpg',799,534]
 tags: ['helloworld']
 ---
 

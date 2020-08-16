@@ -1,8 +1,8 @@
 ---
 title: このサイトについて
 description: このサイトの紹介、免責事項など
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/gorimepresetV1A_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/gorimepresetV1A_TP_V4.jpg
+eyecatchImage: ['/images/about.jpg',800,513]
+thumbnailImage: ['/images/about.jpg',800,513]
 ---
 
 このブログは、三重県四日市市に住むガジェット好きのWeb系エンジニアが、

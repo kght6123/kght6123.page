@@ -1,8 +1,8 @@
 ---
 title: WSLでrootのパスワード忘れたとき
 description: 'WSLでrootのパスワード忘れたときに、再設定するためのコマンドをしょうかいします！'
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/paku1181702_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/paku1181702_TP_V4.jpg
+eyecatchImage: ['/images/posts/lost-root-password-for-wsl.jpg',799,534]
+thumbnailImage: ['/images/posts/lost-root-password-for-wsl.jpg',799,534]
 tags: ['Windows', 'WSL', 'Linux']
 ---
 

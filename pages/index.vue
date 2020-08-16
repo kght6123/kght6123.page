@@ -8,9 +8,9 @@
       type="slides"
       class="m-0"
     >
-      <amp-img src="https://www.pakutaso.com/shared/img/thumb/bobjinno7050165_TP_V4.jpg" layout="responsive" width="800" height="600"></amp-img>
-      <amp-img src="https://www.pakutaso.com/shared/img/thumb/BOBSC2054_5_TP_V4.jpg" layout="responsive" width="800" height="600"></amp-img>
-      <amp-img src="https://www.pakutaso.com/shared/img/thumb/BOB20614B002_TP_V4.jpg" layout="responsive" width="800" height="600"></amp-img>
+      <amp-img src="/images/top1.jpg" layout="responsive" width="800" height="600"></amp-img>
+      <amp-img src="/images/top2.jpg" layout="responsive" width="800" height="600"></amp-img>
+      <amp-img src="/images/top3.jpg" layout="responsive" width="800" height="600"></amp-img>
     </amp-carousel>
 
     <ul v-if="tags" class="pt-2">
@@ -23,8 +23,7 @@
 
     <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-2">
       <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative pb-6" :to="`${file.path}`">
-        <amp-img :src="file.thumbnailImageUrl" layout="responsive" width="799"
-      height="534" class="block rounded-t-sm"></amp-img>
+        <amp-img :src="file.thumbnailImage[0]" layout="responsive" :width="file.thumbnailImage[1]" :height="file.thumbnailImage[2]" class="block rounded-t-sm"></amp-img>
         <article class="block rounded-b-sm p-2">
           <h2 class="block font-medium text-base">{{ file.title }}</h2>
           <p class="block text-xs">{{ file.description }}</p>

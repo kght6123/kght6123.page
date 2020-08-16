@@ -1,8 +1,8 @@
 ---
 title: プライバシーポリシー
 description: Privacy policy
-eyecatchImageUrl: https://www.pakutaso.com/shared/img/thumb/5G1449_TP_V4.jpg
-thumbnailImageUrl: https://www.pakutaso.com/shared/img/thumb/5G1449_TP_V4.jpg
+eyecatchImage: ['/images/privacy-policy.jpg',800,513]
+thumbnailImage: ['/images/privacy-policy.jpg',800,513]
 ---
 
 ## 当サイトについて
