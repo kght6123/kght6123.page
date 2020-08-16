@@ -44,18 +44,20 @@
       >
         {{ page.updatedAt }}
       </amp-timeago>
-      <ul>
-        <li itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs">
-          <nuxt-link to="/" itemprop="url">
+      <ul itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="inline-block text-xs">
+          <nuxt-link to="/" itemprop="item">
             <font-awesome-icon :icon="['fa', 'home']" />
-            <span itemprop="title">ホーム</span>
+            <span itemprop="name">ホーム</span>
           </nuxt-link>
+          <meta itemprop="position" content="1" />
         </li>
-        <li v-for="parentPath in parentPathList" :key="parentPath.path" itemscope itemtype="https://data-vocabulary.org/Breadcrumb" class="inline-block text-xs pr-1">
+        <li v-for="(parentPath, index) in parentPathList" :key="parentPath.path" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="inline-block text-xs pr-1">
           <font-awesome-icon :icon="['fa', 'angle-right']" />
-          <nuxt-link :to="`/${parentPath.path}`" itemprop="url">
-            <span itemprop="title">{{ parentPath.name }}</span>
+          <nuxt-link :to="`/${parentPath.path}`" itemprop="item">
+            <span itemprop="name">{{ parentPath.name }}</span>
           </nuxt-link>
+          <meta itemprop="position" :content="index + 2" />
         </li>
       </ul>
       <p>{{ page.description }}</p>
