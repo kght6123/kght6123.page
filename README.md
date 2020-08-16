@@ -29,6 +29,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - [ ] ストラクチャードデータに対応 https://developers.google.com/search/docs/data-types/article
 - [ ] Googleアナリティクスを設定
 - [ ] Adsを設定
+- [ ] ソースコードの整理と見直し
 - [ ] 全文検索をできるようにする？？（非AMP）
 
 ## メモ

@@ -30,7 +30,7 @@
     </article>
     <article class="p-8" v-if="isPageListView === false">
       <!-- 記事のとき -->
-      <div class="overflow-hidden h-32 flex justify-center items-center content-center">
+      <div class="overflow-hidden h-32 flex justify-center items-center content-center mb-4">
         <amp-img v-if="page.eyecatchImage" :src="page.eyecatchImage[0]" layout="intrinsic" :width="page.eyecatchImage[1]" :height="page.eyecatchImage[2]" class="block"></amp-img>
       </div>
       <h1 class="post-title">{{ page.title }}</h1>
