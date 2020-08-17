@@ -1,6 +1,6 @@
 <template>
   <amp-body>
-    <amp-sidebar id="menu-sidebar" layout="nodisplay" side="left" class="w-full bg-gray-600">
+    <amp-sidebar id="menu-sidebar" layout="nodisplay" side="left" class="w-full md:w-1/3 bg-gray-600">
       <amp-nested-menu layout="fill">
         <ul>
           <!--li>
@@ -45,20 +45,29 @@
         </ul>
       </amp-nested-menu>
     </amp-sidebar>
-    <amp-sidebar id="profile-sidebar" layout="nodisplay" side="right" class="w-full bg-gray-600">
-      <article>
+    <amp-sidebar id="profile-sidebar" layout="nodisplay" side="right" class="w-full md:w-1/3 bg-gray-600">
+      <article class="flex-col-center">
         <header>
-          <h1>about</h1>
+          <h1>About</h1>
         </header>
-        <section>
-          <h2>Message</h2>
-          <p>本文・・・</p>
-          <h2>About Me</h2>
-          <p>本文・・・</p>
-          <h2>Twitter</h2>
-          <p>本文・・・</p>
-          <h2>Github</h2>
-          <p>本文・・・</p>
+        <section class="flex-col-center text-center">
+          <h2>本サイトについて</h2>
+          <p class="text-xs px-12">趣味で開発したプログラムや開発メモを載せています。<br />
+          ソースコードはGithubで公開しつつ、なるべく後から分かるように解説に努めてますので、<br>
+          誰かのお役に立てれば嬉しいです。</p>
+          <h2>プロフィール</h2>
+          <div class="overflow-hidden w-32 h-32 rounded-full flex-row-center bg-gray-800">
+            <amp-img src="icon.png" layout="intrinsic" width="600" height="600" class="block"></amp-img>
+          </div>
+          <div class="text-center">
+            <h3>kght6123</h3>
+            <p class="text-xs px-12">佐賀県出身で1985年生まれ。<br />
+            三重県四日市市在住のシステムエンジニア。家庭を大事にしたい1児の父。</p>
+          </div>
+          <div class="text-xs flex-row-center">
+            <a href="" class="block mx-2"><font-awesome-icon :icon="['fab', 'twitter']" />&nbsp;Twitter</a>
+            <a href="" class="block mx-2"><font-awesome-icon :icon="['fab', 'github']" />&nbsp;Github</a>
+          </div>
         </section>
       </article>
     </amp-sidebar>
@@ -66,7 +75,7 @@
     <!--amp-auto-ads type="adsense" data-ad-client="ca-pub-9175345651644872">
     </amp-auto-ads-->
 
-    <header class="flex flex-row flex-no-wrap justify-between items-center content-center">
+    <header class="bg-gray-600 flex flex-row flex-no-wrap justify-between items-center content-center">
       <button class="p-4 font-black" on="tap:menu-sidebar">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </button>
@@ -77,8 +86,8 @@
         <font-awesome-icon :icon="['fa', 'house-user']" />
       </button>
     </header>
-    <Nuxt />
-    <aside class="grid grid-cols-3 grid-rows-1 gap-6 p-2 mx-6 justify-center items-center content-around justify-items-center">
+    <Nuxt class="lg:mx-48 xl:mx-64 bg-gray-600" />
+    <aside class="lg:mx-48 xl:mx-64 bg-gray-600 grid grid-cols-3 grid-rows-1 gap-6 p-2 px-6 justify-center items-center content-around justify-items-center">
       <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
       <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
       <amp-social-share type="line" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>

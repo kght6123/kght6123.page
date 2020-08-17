@@ -13,7 +13,7 @@
       <amp-img src="/images/top3.jpg" layout="responsive" width="800" height="600"></amp-img>
     </amp-carousel>
 
-    <ul v-if="tags" class="pt-2">
+    <ul v-if="tags" class="pt-2 px-2">
       <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
         <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
           {{ tag }}
@@ -21,7 +21,7 @@
       </li>
     </ul>
 
-    <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-2">
+    <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-2 p-2">
       <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative pb-6" :to="`${file.path}`">
         <amp-img :src="file.thumbnailImage[0]" layout="responsive" :width="file.thumbnailImage[1]" :height="file.thumbnailImage[2]" class="block rounded-t-sm"></amp-img>
         <article class="block rounded-b-sm p-2">

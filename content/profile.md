@@ -9,11 +9,11 @@ thumbnailImage: ['/images/profile.jpg',800,540]
 
 佐賀県出身で1985年生まれ
 
-三重県四日市市在住の35歳の業務系システムエンジニア。
+三重県四日市市在住のシステムエンジニア。
 
 <!--
 
-主な言語は、Java/Servlet/JSP、JavaScript/CSS。
+主な言語は、今はJavaScript/CSSなど。昔は、Java/Servlet/JSPも触ってました。
 
 個人では、Andorid(Kotlin)、PHP、Ruby、Vue.js、Bootstrap4、Docker、RaspberryPiなどなどを、使います。
 

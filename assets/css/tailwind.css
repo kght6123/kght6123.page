@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply bg-gray-600 text-white;
+  @apply bg-gray-700 text-white;
 }
 
 .nuxt-content {
@@ -58,6 +58,12 @@ amp-social-share {
   @apply w-full /*!important*/;
 }
 
+.flex-row-center {
+  @apply flex flex-row justify-center items-center content-center;
+}
+.flex-col-center {
+  @apply flex flex-col justify-center items-center content-center;
+}
 .justify-items-center {
   justify-items: center;
 }

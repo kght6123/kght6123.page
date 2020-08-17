@@ -24,12 +24,12 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。' },
+      { hid: 'description', name: 'description', content: '趣味で開発したプログラムや開発メモを載せています。ソースコードはGithubで公開しつつ、なるべく後から分かるように解説に努めてますので、誰かのお役に立てれば嬉しいです。' },
       { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'げぐはつぺじ' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:title', property: 'og:title', content: 'げぐはつぺじ', },
-      { hid: 'og:description', property: 'og:description', content: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。' },
+      { hid: 'og:description', property: 'og:description', content: '趣味で開発したプログラムや開発メモを載せています。ソースコードはGithubで公開しつつ、なるべく後から分かるように解説に努めてますので、誰かのお役に立てれば嬉しいです。' },
       { hid: 'og:image', property: 'og:image', content: '/images/top1.jpg' },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:site', name: 'twitter:site', content: '@kght6123' },
@@ -73,7 +73,7 @@ export default {
       regular: [],
       light: [],
       duotone: [],
-      brands: []
+      brands: ['faTwitter','faGithub']
     }
   },
   /*
@@ -128,7 +128,7 @@ export default {
     meta: {
       name: 'げぐはつぺじ',
       author: 'kght6123',
-      description: '趣味で開発したプログラムや開発メモ、ラズパイ、ガジェット系のネタと、趣味で撮った写真を一部、載せています。ソースコードはGithubで公開してます。誰かの役に立てれば嬉しい。',
+      description: '趣味で開発したプログラムや開発メモを載せています。ソースコードはGithubで公開しつつ、なるべく後から分かるように解説に努めてますので、誰かのお役に立てれば嬉しいです。',
       lang: 'ja',
       nativeUI: true,
     },
