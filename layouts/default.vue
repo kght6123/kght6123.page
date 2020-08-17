@@ -75,7 +75,7 @@
     <!--amp-auto-ads type="adsense" data-ad-client="ca-pub-9175345651644872">
     </amp-auto-ads-->
 
-    <header class="bg-gray-600 flex flex-row flex-no-wrap justify-between items-center content-center">
+    <header class="bg-gray-600 flex flex-row flex-no-wrap justify-between items-center content-center shadow-md fixed top-0 w-full z-50">
       <button class="p-4 font-black" on="tap:menu-sidebar">
         <font-awesome-icon :icon="['fa', 'bars']" />
       </button>
@@ -86,7 +86,7 @@
         <font-awesome-icon :icon="['fa', 'house-user']" />
       </button>
     </header>
-    <Nuxt class="lg:mx-48 xl:mx-64 bg-gray-600" />
+    <Nuxt class="lg:mx-48 xl:mx-64 bg-gray-600" style="padding-top: 3.5rem;" />
     <aside class="lg:mx-48 xl:mx-64 bg-gray-600 grid grid-cols-3 grid-rows-1 gap-6 p-2 px-6 justify-center items-center content-around justify-items-center">
       <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
       <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
