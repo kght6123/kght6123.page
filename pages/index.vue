@@ -2,15 +2,15 @@
   <div>
     <amp-carousel
       lightbox
-      width="800"
-      height="600"
+      width="1600"
+      height="900"
       layout="responsive"
       type="slides"
       class="m-0"
     >
-      <amp-img src="/images/top1.jpg" layout="responsive" width="800" height="600"></amp-img>
-      <amp-img src="/images/top2.jpg" layout="responsive" width="800" height="600"></amp-img>
-      <amp-img src="/images/top3.jpg" layout="responsive" width="800" height="600"></amp-img>
+      <amp-img src="/images/top1.jpg" layout="fixed-height" height="600"></amp-img>
+      <amp-img src="/images/top2.jpg" layout="fixed-height" height="600"></amp-img>
+      <amp-img src="/images/top3.jpg" layout="fixed-height" height="600"></amp-img>
     </amp-carousel>
 
     <ul v-if="tags" class="pt-2 px-2">
