@@ -23,7 +23,7 @@
 
     <nav class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-2 p-2">
       <nuxt-link v-for="file in newPosts" :key="file.slug" class="block shadow-sm bg-gray-100 text-gray-800 relative pb-6" :to="`${file.path}`">
-        <amp-img :src="file.thumbnailImage[0]" layout="responsive" :width="file.thumbnailImage[1]" :height="file.thumbnailImage[2]" class="block rounded-t-sm"></amp-img>
+        <amp-img v-if="file.thumbnailImage" :src="file.thumbnailImage[0]" layout="responsive" :width="file.thumbnailImage[1]" :height="file.thumbnailImage[2]" class="block rounded-t-sm"></amp-img>
         <article class="block rounded-b-sm p-2">
           <h2 class="block font-medium text-base">{{ file.title }}</h2>
           <p class="block text-xs">{{ file.description }}</p>
