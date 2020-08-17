@@ -65,8 +65,8 @@
             三重県四日市市在住のシステムエンジニア。家庭を大事にしたい1児の父。</p>
           </div>
           <div class="text-xs flex-row-center">
-            <a href="" class="block mx-2"><font-awesome-icon :icon="['fab', 'twitter']" />&nbsp;Twitter</a>
-            <a href="" class="block mx-2"><font-awesome-icon :icon="['fab', 'github']" />&nbsp;Github</a>
+            <a href="https://twitter.com/kght6123" target="_blank" class="block mx-2"><font-awesome-icon :icon="['fab', 'twitter']" />&nbsp;Twitter</a>
+            <a href="https://github.com/kght6123" target="_blank" class="block mx-2"><font-awesome-icon :icon="['fab', 'github']" />&nbsp;Github</a>
           </div>
         </section>
       </article>
