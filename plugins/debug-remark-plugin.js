@@ -8,7 +8,7 @@ function debug() {
     //     : '';
     //   return `<span role="img" aria-label="${description}">${match}</span>`;
     // });
-    console.log(`plugins/debug-remark-plugin.js:debug`, node.value)
+    // console.log(`plugins/debug-remark-plugin.js:debug`, node.value)
   }
   function transform(markdownAST) {
     visit(markdownAST, 'text', visitor)
