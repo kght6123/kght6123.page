@@ -32,7 +32,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - [ ] Googleアナリティクスを設定
 - [ ] Adsを設定
 - [ ] ソースコードの整理と見直し
-- [ ] 全文検索をできるようにする？？（非AMP）
+- [ ] 全文検索をできるようにする？？（amp-script？）
 
 ## メモ
 
