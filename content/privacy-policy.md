@@ -1,4 +1,5 @@
 ---
+sortNo: 2
 title: プライバシーポリシー
 description: Privacy policy
 eyecatchImage: ['/images/privacy-policy.jpg',800,513]

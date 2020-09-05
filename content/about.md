@@ -1,4 +1,5 @@
 ---
+sortNo: 3
 title: このサイトについて
 description: このサイトの紹介、免責事項など
 eyecatchImage: ['/images/about.jpg',800,513]

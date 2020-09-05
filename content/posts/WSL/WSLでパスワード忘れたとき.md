@@ -1,4 +1,5 @@
 ---
+sortNo: 5
 title: WSLでrootのパスワード忘れたとき
 description: 'WSLでrootのパスワード忘れたときに、再設定するためのコマンドをしょうかいします！'
 eyecatchImage: ['/images/posts/lost-root-password-for-wsl.jpg',799,534]

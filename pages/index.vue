@@ -47,7 +47,7 @@
 export default {
   async fetch() {
     // ページ一覧を取得する
-    const newPosts = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('updatedAt', 'desc').fetch()
+    const newPosts = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('sortNo', 'desc').fetch()
     // console.log('fetch newPosts', newPosts[0], this.$fetchState)
     this.newPosts = newPosts
     // ページ一覧から全タグの一覧を作成する

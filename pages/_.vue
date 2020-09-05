@@ -155,7 +155,7 @@ export default {
           tagName = paths[1]
           page = await $content('/', { deep: true })
             .where({ 'tags': { $contains: tagName } })
-            .sortBy('updatedAt', 'desc')
+            .sortBy('sortNo', 'desc')
             .fetch()
             .catch(err => {
               error({ statusCode: 404, message: "Page not found" })

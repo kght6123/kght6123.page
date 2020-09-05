@@ -1,4 +1,5 @@
 ---
+sortNo: 7
 title: amp-scriptでVueを使いたい
 description: 'amp-scriptでVueを使うときに、調べたことをしょうかいします！'
 eyecatchImage: ['/images/posts/promo-vuejs.jpg',1600,1066]
@@ -30,10 +31,10 @@ Vueを使うすべてのjsファイルでVueのソースコードを埋め込む
 
 理想は、importを使ってVue.jsを読み込みたい！ですが、iOSのSafariはServiceWorker上でimportが使えないので、iOSに対応したいときはimportは使えないです。
 
-（amp-scriptはServiceWorker上で動きます。）
+（補足：amp-scriptはServiceWorker上で動きます。）
 
 ## Vue.jsとJavaScriptの使い分け
 
 簡単なDOM操作だけならJavaScriptで実装、複雑なDOM操作が必要ならVue.jsで実装、150KBを超えそうなら最適化するか、AMPを諦めるか、JavaScriptへ切り替えを検討。。。って感じですか
 
-うーん、、、最初からVue.js使わずにJavaScriptで実装した方が良いかも。。。汗
+うーん、、、最初からVue.js使わずに、JavaScriptで実装した方が良いかも。。。汗

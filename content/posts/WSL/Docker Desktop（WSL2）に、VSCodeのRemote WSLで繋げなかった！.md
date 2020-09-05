@@ -1,4 +1,5 @@
 ---
+sortNo: 6
 title: 'Docker Desktop（WSL2）に、VSCodeのRemote WSLで繋げなかった！'
 description: 'Remote WSLが対応してない？直近、Alpine上のDocker使うため困ってないので放置中'
 eyecatchImage: ['/images/posts/remote-wsl-and-wsl2-and-docker-desktop.jpg',800,533]

@@ -1,4 +1,5 @@
 ---
+sortNo: 1
 title: プロフィール
 description: 'サイト管理者のプロフィールです。'
 eyecatchImage: ['/images/profile.jpg',800,540]

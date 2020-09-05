@@ -26,7 +26,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - [x] 全体のmetaタグの見直しとページ別の設定
 - [x] プロフィールページの作成
 - [x] PC向けにレイアウト調整
-- [ ] 過去記事（Markdown）を移行
+- [x] 過去記事（Markdown）を移行
 - [ ] ライトモードに対応（現在はダークモード）
 - [ ] ストラクチャードデータに対応 https://developers.google.com/search/docs/data-types/article
 - [ ] Googleアナリティクスを設定
