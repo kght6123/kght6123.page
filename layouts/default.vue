@@ -88,10 +88,10 @@
     </header>
     <Nuxt class="lg:mx-48 xl:mx-64 bg-gray-600" style="padding-top: 3.5rem;" />
     <aside class="lg:mx-48 xl:mx-64 bg-gray-600 grid grid-cols-3 grid-rows-1 gap-6 p-2 px-6 justify-center items-center content-around justify-items-center">
-      <amp-social-share type="twitter" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
+      <amp-social-share type="twitter" layout="fixed-height" height="40"></amp-social-share>
       <!--amp-social-share type="facebook" class="w-full bg-gray-600 rounded-sm"></amp-social-share-->
-      <amp-social-share type="line" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
-      <amp-social-share type="system" class="w-full bg-gray-600 rounded-lg" layout="fixed-height" height="40"></amp-social-share>
+      <amp-social-share type="line" layout="fixed-height" height="40"></amp-social-share>
+      <amp-social-share type="system" layout="fixed-height" height="40"></amp-social-share>
     </aside>
   </amp-body>
 </template>

@@ -13,9 +13,9 @@
       <amp-img src="/images/top3.jpg" layout="fixed-height" height="600"></amp-img>
     </amp-carousel>
 
-    <ul v-if="tags" class="pt-2 px-2">
+    <ul v-if="tags" class="pt-2 px-2 mt-1">
       <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
-        <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+        <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3 mb-1" :to="`/tags/${tag}`">
           {{ tag }}
         </nuxt-link>
       </li>
@@ -57,9 +57,11 @@ export default {
       .catch(err => {
         error({ statusCode: 404, message: "Page not found" })
       })
-    this.tags = tagOnlyPages.flatMap(
+    const tags = new Set(tagOnlyPages.flatMap(
       tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
-    )
+    )).values()
+    this.tags = Array.from(tags).sort()
+    // console.log(this.tags)
   },
   amp: 'only',
   head () {

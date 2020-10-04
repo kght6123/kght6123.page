@@ -3,8 +3,8 @@
     <article class="p-8" v-if="isPageListView === true">
       <!-- 記事リストのとき -->
       <h1 class="mt-2">{{ `${tagName} タグの付いた記事一覧` || `${category} カテゴリの記事一覧` }}</h1>
-      <ul v-if="tags">
-        <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
+      <ul v-if="tags" class="mt-1">
+        <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
           <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
             {{ tag }}
           </nuxt-link>
@@ -61,8 +61,8 @@
         </li>
       </ul>
       <p>{{ page.description }}</p>
-      <ul v-if="page.tags">
-        <li v-for="tag in page.tags" :key="tag" class="inline-block text-xs pr-1">
+      <ul v-if="page.tags" class="mt-1">
+        <li v-for="tag in page.tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
           <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
             {{ tag }}
           </nuxt-link>
@@ -83,9 +83,9 @@
       <nuxt-content :document="page"/>
       <div v-if="tags" class="mt-8">
         <h5 class="text-xs">関連タグ</h5>
-        <ul>
+        <ul class="mt-1">
           <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
-            <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
+            <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3 mb-1" :to="`/tags/${tag}`">
               {{ tag }}
             </nuxt-link>
           </li>

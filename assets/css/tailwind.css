@@ -54,8 +54,8 @@ a {
   @apply underline;
 }
 
-amp-social-share {
-  @apply w-full /*!important*/;
+.amp-social-share-twitter, .amp-social-share-line, .amp-social-share-system {
+  @apply w-full bg-gray-600 rounded-lg;
 }
 
 .flex-row-center {
@@ -66,4 +66,11 @@ amp-social-share {
 }
 .justify-items-center {
   justify-items: center;
+}
+
+.footnotes ol {
+  @apply list-decimal pl-10;
+}
+.footnotes ol li {
+  @apply text-sm;
 }

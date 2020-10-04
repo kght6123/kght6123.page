@@ -93,6 +93,9 @@ export default {
   content: {
     // nestedProperties: ['tags'],
     markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-material-dark.css'
+      },
       remarkPlugins: [
         'remark-squeeze-paragraphs',
         'remark-slug',
