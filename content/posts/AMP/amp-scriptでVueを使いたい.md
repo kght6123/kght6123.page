@@ -7,8 +7,6 @@ thumbnailImage: ['/images/posts/promo-vuejs.jpg',1600,1066]
 tags: ['Vue.js', 'AMP', 'amp-script']
 ---
 
-結論としては、制限が多いのでVue.jsは一部で使うことにしました。
-
 下記のampproject/amphtmlのサンプル（[vue-todomvc.amp.html](https://github.com/ampproject/amphtml/blob/master/examples/amp-script/vue-todomvc.amp.html)、[vue-todomvc.js](https://github.com/ampproject/amphtml/blob/master/examples/amp-script/vue-todomvc.js)）を参考に Vue.js で実装できます
 
 （なかなか、見つけるのに苦労しました。汗）
