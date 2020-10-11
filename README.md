@@ -1,5 +1,19 @@
 # kght6123.page
 
+Full-AMPの静的サイト（ブログ）がマークダウンで作れる、静的サイトジェネレーター
+
+## Initial Setup
+
+```bash
+# firebase-toolsをインストール
+yarn global add firebase-tools
+# zshの場合のみ実行する
+echo "export PATH=\"\$PATH:\`yarn global bin\`\"" >> ~/.zshrc
+source ~/.zshrc
+# firebaseにログイン
+firebase login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
+```
+
 ## Build Setup
 
 ```bash
@@ -34,7 +48,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - [ ] ソースコードの整理と見直し
 - [ ] 全文検索をできるようにする？？（amp-script？）
 
-## メモ
+## Project構築時のメモ
 
 ```sh
 ~/develop % yarn create nuxt-app kght6123.page
