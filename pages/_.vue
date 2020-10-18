@@ -2,7 +2,11 @@
   <main>
     <article class="p-8" v-if="isPageListView === true">
       <!-- 記事リストのとき -->
-      <h1 class="mt-2">{{ `${tagName} タグの付いた記事一覧` || `${category} カテゴリの記事一覧` }}</h1>
+      <!-- NOTE:下記のタイトル作成処理をmethodsに書いて呼び出すと、関数は値を返しているのに、表示は空になる（原因不明） -->
+      <h1 class="mt-2">{{ tagName ? `${tagName} タグの付いた記事一覧`
+         : category === `tags` ? `すべてのタグ一覧`
+         : category === `dirs` ? `${pathMatch.replace('dirs', 'posts')} の記事一覧`
+         : `${category} カテゴリの記事一覧` }}</h1>
       <ul v-if="tags" class="mt-1">
         <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
           <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
@@ -54,13 +58,16 @@
         </li>
         <li v-for="(parentPath, index) in parentPathList" :key="parentPath.path" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="inline-block text-xs pr-1">
           <font-awesome-icon :icon="['fa', 'angle-right']" />
-          <nuxt-link :to="`/${parentPath.path}`" itemprop="item">
+          <nuxt-link v-if="index < parentPathList.length - 1" :to="`/${parentPath.path}`.replace('posts', 'dirs')" itemprop="item">
+            <span itemprop="name">{{ parentPath.name }}</span>
+          </nuxt-link>
+          <nuxt-link v-if="index >= parentPathList.length - 1" :to="`/${parentPath.path}`" itemprop="item">
             <span itemprop="name">{{ parentPath.name }}</span>
           </nuxt-link>
           <meta itemprop="position" :content="index + 2" />
         </li>
       </ul>
-      <p>{{ page.description }}</p>
+      <p class="py-4">{{ page.description }}</p>
       <ul v-if="page.tags" class="mt-1">
         <li v-for="tag in page.tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
           <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
@@ -163,14 +170,18 @@ export default {
         }
         break
       case 'posts':
-        // 一覧で表示するか判定する
-        isPageListView = paths.length < 2
         // ページを取得する
         page = await $content(pathMatch)
           .fetch()
           .catch(err => {
             error({ statusCode: 404, message: "Page not found" })
           })
+        if (page.length !== undefined) {
+          error({ statusCode: 404, message: "Page not found" })
+          return
+        }
+        // 常にページで表示する
+        isPageListView = false
         // 親ページ一覧から関連タグの一覧を作成する
         const tagOnlyParentPages = await $content(nextAndPrevPagePath, { deep: true })
           .only(['tags'])
@@ -181,6 +192,16 @@ export default {
         tags = tagOnlyParentPages.flatMap(
           tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
         )
+        break
+      case 'dirs':
+        // ディレクトリ内のページ一覧を取得する
+        page = await $content(pathMatch.replace('dirs', 'posts'), { deep: true })
+          .fetch()
+          .catch(err => {
+            error({ statusCode: 404, message: "Page not found" })
+          })
+        // 常に一覧で表示する
+        isPageListView = true
         break
       default:
         // 常に投稿で表示する
@@ -204,11 +225,11 @@ export default {
       // データを返す
       return {
         category,
-        tags,
+        tags, // 関連タグのリスト
         isPageListView,
         isTagListView,
         page,
-        parentPathList,
+        parentPathList, // パンくずリスト用のURLリスト
         prev,
         next
       }
@@ -217,11 +238,12 @@ export default {
       return {
         category,
         tagName,
-        tags,
+        tags, // 関連タグのリスト
         isPageListView,
         isTagListView,
         pages: page,
-        parentPathList
+        parentPathList, // パンくずリスト用のURLリスト
+        pathMatch // dirsのときのタイトル名に使う
       }
     }
   },
@@ -241,22 +263,31 @@ export default {
   },
   head() {
     return {
-      title: this.page.title ? this.page.title : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`,
+      // NOTE:下記のタイトル作成処理をmethodsに書いて呼び出すと、関数は値を返しているのに、表示は空になる（原因不明）
+      title: this.page && this.page.title ? this.page.title
+        : this.tagName ? `${this.tagName} タグの付いた記事一覧`
+        : this.category === `tags` ? `すべてのタグ一覧`
+        : this.category === `dirs` ? `${this.pathMatch.replace('dirs', 'posts')} の記事一覧`
+        : `${this.category} カテゴリの記事一覧`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.page.description ? this.page.description : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+          content: this.page.description ? this.page.description : this.tagName ? `${this.tagName} タグの付いた記事一覧` : `${this.category} カテゴリの記事一覧`
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.page.title ? this.page.title : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+          content: this.page && this.page.title ? this.page.title
+            : this.tagName ? `${this.tagName} タグの付いた記事一覧`
+            : this.category === `tags` ? `すべてのタグ一覧`
+            : this.category === `dirs` ? `${this.pathMatch.replace('dirs', 'posts')} の記事一覧`
+            : `${this.category} カテゴリの記事一覧`
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.page.description ? this.page.description : `${this.tagName} タグの付いた記事一覧` || `${this.category} カテゴリの記事一覧`
+          content: this.page.description ? this.page.description : this.tagName ? `${this.tagName} タグの付いた記事一覧` : `${this.category} カテゴリの記事一覧`
         },
         {
           hid: 'og:image',
