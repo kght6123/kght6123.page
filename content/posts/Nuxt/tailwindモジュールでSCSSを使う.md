@@ -1,6 +1,6 @@
 ---
 sortNo: 9
-title: nuxt/tailwindモジュールでSCSSを使ってBEM記法を楽に書く
+title: 'nuxt/tailwindモジュールでSCSSを使ってBEM記法を楽に書く'
 description: 'TailwindでBEM記法を使ったCSSを書くことが多いので、SCSSを使って楽にしました'
 eyecatchImage: ['/images/posts/nuxt-tailwind-logo.png',1280,640]
 thumbnailImage: ['/images/posts/nuxt-tailwind-logo.png',1280,640]
