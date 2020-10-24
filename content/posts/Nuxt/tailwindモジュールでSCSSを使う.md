@@ -13,11 +13,11 @@ nuxt/tailwindモジュールでSCSSを使う方法を備忘録代わりにまと
 
 （2児が産まれたてで忙しいので、深夜に目を擦りながら書いてます、、、間違ってたらごめんなさい）
 
-## assets\css\tailwind.css ファイルの拡張子を scss に変える
+## 1. assets\css\tailwind.css ファイルの拡張子を scss に変える
 
 そのままの意味です、ファイルの拡張子を scss に変えます。
 
-## nuxt.config.js nuxt/tailwindモジュールの設定を追加する
+## 2. nuxt.config.js nuxt/tailwindモジュールの設定を追加する
 
 下記のような設定を、nuxt.config.jsに追記します。
 
@@ -33,7 +33,7 @@ tailwindcss: {
 },
 ```
 
-## node-sass sass-loader を dev でインストールする
+## 3. node-sass sass-loader を dev でインストールする
 
 ```sh
 npm install -S -D node-sass sass-loader # npmのとき
@@ -41,7 +41,7 @@ or
 yarn add -D node-sass sass-loader # yarnのとき
 ```
 
-## assets\css\tailwind.scss の中にBEM記法で、cssを書く
+## 4. assets\css\tailwind.scss の中にBEM記法で、cssを書く
 
 こんな感じで書きます。
 

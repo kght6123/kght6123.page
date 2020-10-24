@@ -3,114 +3,45 @@
     <article class="p-8" v-if="isPageListView === true">
       <!-- 記事リストのとき -->
       <!-- NOTE:下記のタイトル作成処理をmethodsに書いて呼び出すと、関数は値を返しているのに、表示は空になる（原因不明） -->
-      <h1 class="mt-2">{{ tagName ? `${tagName} タグの付いた記事一覧`
+      <atom-header-1>{{ tagName ? `${tagName} タグの付いた記事一覧`
          : category === `tags` ? `すべてのタグ一覧`
          : category === `dirs` ? `${pathMatch.replace('dirs', 'posts')} の記事一覧`
-         : `${category} カテゴリの記事一覧` }}</h1>
+         : `${category} カテゴリの記事一覧` }}</atom-header-1>
       <ul v-if="tags" class="mt-1">
-        <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
-          <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
-            {{ tag }}
-          </nuxt-link>
-        </li>
+        <atom-item-tag v-for="tag in tags" :key="tag" :name="tag" :label="tag" />
       </ul>
       <ol v-if="pages" class="p-4 my-4 rounded-lg bg-gray-700">
-        <li v-for="page in pages" :key="page.slug">
-          <nuxt-link class="block pb-2" :to="`${page.path}`">
-            {{ page.title }}
-            <amp-timeago
-              class="text-xxs align-text-bottom"
-              layout="fixed"
-              :datetime="page.updatedAt"
-              width="56"
-              height="16"
-              locale="ja"
-            >
-              {{ page.updatedAt }}
-            </amp-timeago>
-          </nuxt-link>
-        </li>
+        <molecule-item-page v-for="page in pages" :key="page.slug" :item="page" />
       </ol>
     </article>
     <article class="p-8" v-if="isPageListView === false">
       <!-- 記事のとき -->
-      <div class="overflow-hidden h-32 flex-row-center mb-4">
-        <amp-img v-if="page.eyecatchImage" :src="page.eyecatchImage[0]" layout="intrinsic" :width="page.eyecatchImage[1]" :height="page.eyecatchImage[2]" class="block"></amp-img>
-      </div>
-      <h1 class="post-title">{{ page.title }}</h1>
-      <amp-timeago
-        class="text-xxs text-right pr-2 pb-1"
+      <atom-eyecatch-image
+        v-if="page.eyecatchImage"
+        :src="page.eyecatchImage[0]"
+        :width="page.eyecatchImage[1]"
+        :height="page.eyecatchImage[2]" />
+      <atom-header-1 class="post-title">{{ page.title }}</atom-header-1>
+      <atom-amp-timeago
+        :datetime="page.updatedAt" 
         layout="responsive"
-        width="160"
-        height="20"
-        :datetime="page.updatedAt"
-        locale="ja"
-      >
-        {{ page.updatedAt }}
-      </amp-timeago>
-      <ul itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="inline-block text-xs">
-          <nuxt-link to="/" itemprop="item">
-            <font-awesome-icon :icon="['fa', 'home']" />
-            <span itemprop="name">ホーム</span>
-          </nuxt-link>
-          <meta itemprop="position" content="1" />
-        </li>
-        <li v-for="(parentPath, index) in parentPathList" :key="parentPath.path" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="inline-block text-xs pr-1">
-          <font-awesome-icon :icon="['fa', 'angle-right']" />
-          <nuxt-link v-if="index < parentPathList.length - 1" :to="`/${parentPath.path}`.replace('posts', 'dirs')" itemprop="item">
-            <span itemprop="name">{{ parentPath.name }}</span>
-          </nuxt-link>
-          <nuxt-link v-if="index >= parentPathList.length - 1" :to="`/${parentPath.path}`" itemprop="item">
-            <span itemprop="name">{{ parentPath.name }}</span>
-          </nuxt-link>
-          <meta itemprop="position" :content="index + 2" />
-        </li>
-      </ul>
+        :width="160"
+        :height="20"
+        class="text-right pr-2 pb-1" />
+      <molecule-breadcrumb :path-list="parentPathList" />
       <p class="py-4">{{ page.description }}</p>
       <ul v-if="page.tags" class="mt-1">
-        <li v-for="tag in page.tags" :key="tag" class="inline-block text-xs pr-1 mb-1">
-          <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3" :to="`/tags/${tag}`">
-            {{ tag }}
-          </nuxt-link>
-        </li>
+        <atom-item-tag v-for="tag in page.tags" :key="tag" :name="tag" :label="tag" />
       </ul>
-      <div v-if="Object.keys(page.toc).length > 1" class="p-4 my-4 rounded-lg bg-gray-700">
-        <ul class="text-sm">
-          <li
-            v-for="link of page.toc"
-            :key="link.id"
-            :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
-            class="p-2"
-          >
-            <NuxtLink :to="`#${link.id}`" class="block">{{ link.text }}</NuxtLink>
-          </li>
-        </ul>
-      </div>
+      <molecule-mokuji :toc="page.toc" />
       <nuxt-content :document="page"/>
       <div v-if="tags" class="mt-8">
         <h5 class="text-xs">関連タグ</h5>
         <ul class="mt-1">
-          <li v-for="tag in tags" :key="tag" class="inline-block text-xs pr-1">
-            <nuxt-link class="block rounded-lg bg-gray-700 py-1 px-3 mb-1" :to="`/tags/${tag}`">
-              {{ tag }}
-            </nuxt-link>
-          </li>
+          <atom-item-tag v-for="tag in tags" :key="tag" :name="tag" :label="tag" />
         </ul>
       </div>
-      <div class="text-xs grid justify-between grid-cols-3 mt-8">
-        <NuxtLink v-if="prev" :to="`${prev.path}`" class="block">
-          前の記事へ<br />（{{ prev.title }}）
-        </NuxtLink>
-        <span v-if="!prev"></span>
-        <NuxtLink to="/" class="block text-center text-lg">
-          <font-awesome-icon :icon="['fa', 'home']" />
-        </NuxtLink>
-        <NuxtLink v-if="next" :to="`${next.path}`" class="block text-right">
-          次の記事へ<br />（{{ next.title }}）
-        </NuxtLink>
-        <span v-if="!next"></span>
-      </div>
+      <molecule-page-control :next="next" :prev="prev" />
     </article>
   </main>
 </template>
