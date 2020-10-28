@@ -6,6 +6,10 @@
 
 <script>
 export default {
-  amp: false
+  amp: false,
+  mounted() {
+    // No AMPでScriptが動くかテスト
+    console.log(`no amp mounted!!!`)
+  }
 }
 </script>

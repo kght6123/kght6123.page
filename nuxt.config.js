@@ -1,4 +1,11 @@
 
+const modifyHtml = (html) => {
+  // もし、生成されるHTMLを加工したいときはここに処理を書く
+  // 長いコードを書くときは、pluginsにjsを置いてインポートする
+  // html = html.replace('げぐはつ', 'げぐはつうーー')
+  return html
+}
+
 export default {
   /*
   ** Nuxt rendering mode
@@ -139,6 +146,14 @@ export default {
       name: 'げぐはつぺじ',
       short_name: 'げぐはつぺじ',
       lang: 'ja',
+    }
+  },
+  hooks: {
+    'render:route': (_url, page) => {
+      page.html = modifyHtml(page.html)
+    },
+    'generate:page': (page) => {
+      page.html = modifyHtml(page.html)
     }
   }
 }
