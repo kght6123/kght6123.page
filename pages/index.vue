@@ -47,7 +47,7 @@
 export default {
   async fetch() {
     // ページ一覧を取得する
-    const newPosts = await this.$nuxt.context.$content('/', { deep: true }).limit(10).sortBy('sortNo', 'desc').fetch()
+    const newPosts = await this.$nuxt.context.$content('/', { deep: true })/*.limit(20)*/.sortBy('sortNo', 'desc').fetch()
     // console.log('fetch newPosts', newPosts[0], this.$fetchState)
     this.newPosts = newPosts
     // ページ一覧から全タグの一覧を作成する
@@ -57,10 +57,37 @@ export default {
       .catch(err => {
         error({ statusCode: 404, message: "Page not found" })
       })
-    const tags = new Set(tagOnlyPages.flatMap(
-      tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
-    )).values()
-    this.tags = Array.from(tags).sort()
+    
+    // 全てのタグリストを取得する（今は使っていない）
+    // const tags = new Set(tagOnlyPages.flatMap(
+    //   tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
+    // )).values()
+    // this.tags = Array.from(tags).sort()
+    // console.log(this.tags)
+
+    // タグごとに記事の件数を集計する
+    this.tags = tagOnlyPages.reduce((results, tagOnlyPage) => {
+      const tags = tagOnlyPage.tags ? tagOnlyPage.tags : []
+      tags.forEach(tag => {
+        // tagがresultsにあるか
+        const element = results.find(result => result.tag === tag)
+        if (element) {
+            // ある時（下記、初期データを操作）
+            element.counts++
+        } else {
+            // 無いとき（新規に初期データを作成）
+            results.push({
+                tag,
+                counts: 1,
+            })
+        }
+      })
+      return results
+    // 記事件数が多い順に並び替えする
+    }, []).sort(
+      (prev, current) => prev.counts < current.counts ? 1 : -1
+    // 記事件数が多い上位の10件に絞り込み、タグ名だけのリストにする
+    ).slice(0, 10).map((value) => value.tag)
     // console.log(this.tags)
   },
   amp: 'only',

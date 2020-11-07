@@ -29,7 +29,7 @@
         :height="20"
         class="text-right pr-2 pb-1" />
       <molecule-breadcrumb :path-list="parentPathList" />
-      <p class="py-4">{{ page.description }}</p>
+      <p v-if="page.description" class="py-4">{{ page.description }}</p>
       <ul v-if="page.tags" class="mt-1">
         <atom-item-tag v-for="tag in page.tags" :key="tag" :name="tag" :label="tag" />
       </ul>
@@ -84,9 +84,11 @@ export default {
             .catch(err => {
               error({ statusCode: 404, message: "Page not found" })
             })
-          tags = tagOnlyPages.flatMap(
+          // タグの一覧を一意にする
+          tags = new Set(tagOnlyPages.flatMap(
             tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
-          )
+          )).values()
+          tags = Array.from(tags).sort()
           // console.log('tags', tags, tagOnlyPages)
         } else {
           // タグに紐づくページ一覧を取得する
@@ -120,9 +122,11 @@ export default {
           .catch(err => {
             error({ statusCode: 404, message: "Page not found" })
           })
-        tags = tagOnlyParentPages.flatMap(
+        // 関連タグの一覧を一意にする
+        tags = new Set(tagOnlyParentPages.flatMap(
           tagOnlyPage => tagOnlyPage.tags ? tagOnlyPage.tags : []
-        )
+        )).values()
+        tags = Array.from(tags).sort()
         break
       case 'dirs':
         // ディレクトリ内のページ一覧を取得する
