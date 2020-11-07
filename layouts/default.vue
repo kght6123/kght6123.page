@@ -62,7 +62,7 @@
           <div class="text-center">
             <h3>kght6123</h3>
             <p class="text-xs px-12">佐賀県出身で1985年生まれ。<br />
-            三重県四日市市在住のシステムエンジニア。家庭を大事にしたい1児の父。</p>
+            三重県四日市市在住のシステムエンジニア。家庭を大事にしたい2児の父。</p>
           </div>
           <div class="text-xs flex-row-center">
             <a href="https://twitter.com/kght6123" target="_blank" class="block mx-2"><font-awesome-icon :icon="['fab', 'twitter']" />&nbsp;Twitter</a>
