@@ -2,7 +2,7 @@
 sortNo: 11
 title: MapにIndexでアクセスできるようにした
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java']
 ---
 

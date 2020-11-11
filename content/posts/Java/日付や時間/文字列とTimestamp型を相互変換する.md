@@ -2,7 +2,7 @@
 sortNo: 15
 title: 文字列とTimestamp型を相互変換する
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java']
 ---
 

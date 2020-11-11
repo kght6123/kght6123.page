@@ -2,7 +2,7 @@
 sortNo: 12
 title: Mapの一つのKeyに複数の値を持てるようにした
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java']
 ---
 

@@ -3,7 +3,7 @@ sortNo: 7
 title: amp-scriptでVueを使いたい
 description: 'amp-scriptでVueを使うときに、調べたことをしょうかいします！'
 eyecatchImage: ['/images/posts/promo-vuejs.jpg',1600,1066]
-thumbnailImage: ['/images/posts/promo-vuejs.jpg',1600,1066]
+thumbnailImage: ['/images/posts/sm/promo-vuejs.jpg',1600,1066]
 tags: ['Vue.js', 'AMP', 'amp-script']
 ---
 

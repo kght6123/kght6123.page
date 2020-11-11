@@ -2,7 +2,7 @@
 sortNo: 13
 title: ExecuterServiceを強制終了できるようにした
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java']
 ---
 

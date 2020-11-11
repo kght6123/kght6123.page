@@ -3,7 +3,7 @@ sortNo: 8
 title: iPadでGitHub Codespaceを試してみた！
 description: 'iPadでフロントエンドの開発をするために、Github Codespaceを使ってみたので紹介します！'
 eyecatchImage: ['/images/posts/github-codespace-ipad.png',2732,2048]
-thumbnailImage: ['/images/posts/github-codespace-ipad.png',2732,2048]
+thumbnailImage: ['/images/posts/sm/github-codespace-ipad.png',2732,2048]
 tags: ['GitHub', 'GitHub Codespace', 'iPad']
 ---
 

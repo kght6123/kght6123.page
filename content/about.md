@@ -3,7 +3,7 @@ sortNo: 3
 title: このサイトについて
 description: このサイトの紹介、免責事項など
 eyecatchImage: ['/images/about.jpg',800,513]
-thumbnailImage: ['/images/about.jpg',800,513]
+thumbnailImage: ['/images/sm/about.jpg',800,513]
 ---
 
 このブログは、三重県四日市市に住むガジェット好きのWeb系エンジニアが、

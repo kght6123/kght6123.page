@@ -2,7 +2,7 @@
 sortNo: 8
 title: 設定ファイル不要で標準出力にLog4jを使いたい
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java', 'Log4j', 'CLI']
 ---
 

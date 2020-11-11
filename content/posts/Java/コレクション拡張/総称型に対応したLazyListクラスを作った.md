@@ -2,7 +2,7 @@
 sortNo: 16
 title: 総称型に対応したLazyListクラスを作った
 eyecatchImage: ['/images/posts/java-logo.jpg',800,533]
-thumbnailImage: ['/images/posts/java-logo.jpg',800,533]
+thumbnailImage: ['/images/posts/sm/java-logo.jpg',800,533]
 tags: ['Java']
 ---
 
