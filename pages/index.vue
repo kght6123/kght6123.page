@@ -47,11 +47,17 @@
 export default {
   async fetch() {
     // ページ一覧を取得する
-    const newPosts = await this.$nuxt.context.$content('/', { deep: true })/*.limit(20)*/.sortBy('sortNo', 'desc').fetch()
+    const newPosts = await this.$nuxt.context.$content('/', { deep: true })
+      /*.limit(20)*/
+      .where({ disabled: { $ne: true } })
+      .sortBy('sortNo', 'desc')
+      .fetch()
+
     // console.log('fetch newPosts', newPosts[0], this.$fetchState)
     this.newPosts = newPosts
     // ページ一覧から全タグの一覧を作成する
     const tagOnlyPages = await this.$nuxt.context.$content('/', { deep: true })
+      .where({ disabled: { $ne: true } })
       .only(['tags'])
       .fetch()
       .catch(err => {

@@ -47,7 +47,6 @@
 </template>
 
 <script>
-
 export default {
   amp: 'only',
   // head () {
@@ -79,6 +78,7 @@ export default {
         if (isTagListView) {
           // ページ一覧から全タグの一覧を作成する
           const tagOnlyPages = await $content('/', { deep: true })
+            .where({ disabled: { $ne: true } })
             .only(['tags'])
             .fetch()
             .catch(err => {
@@ -95,6 +95,7 @@ export default {
           tagName = paths[1]
           page = await $content('/', { deep: true })
             .where({ 'tags': { $contains: tagName } })
+            .where({ disabled: { $ne: true } })
             .sortBy('sortNo', 'desc')
             .fetch()
             .catch(err => {
@@ -105,6 +106,7 @@ export default {
       case 'posts':
         // ページを取得する
         page = await $content(pathMatch)
+          .where({ disabled: { $ne: true } })
           .fetch()
           .catch(err => {
             error({ statusCode: 404, message: "Page not found" })
@@ -117,6 +119,7 @@ export default {
         isPageListView = false
         // 親ページ一覧から関連タグの一覧を作成する
         const tagOnlyParentPages = await $content(nextAndPrevPagePath, { deep: true })
+          .where({ disabled: { $ne: true } })
           .only(['tags'])
           .fetch()
           .catch(err => {
@@ -131,6 +134,7 @@ export default {
       case 'dirs':
         // ディレクトリ内のページ一覧を取得する
         page = await $content(pathMatch.replace('dirs', 'posts'), { deep: true })
+          .where({ disabled: { $ne: true } })
           .fetch()
           .catch(err => {
             error({ statusCode: 404, message: "Page not found" })
@@ -143,6 +147,7 @@ export default {
         isPageListView = false
         // ページを取得する
         page = await $content(pathMatch)
+          .where({ disabled: { $ne: true } })
           .fetch()
           .catch(err => {
             error({ statusCode: 404, message: "Page not found" })
@@ -154,6 +159,7 @@ export default {
       // 次や前のページ情報を取得する
       const [prev, next] = await $content(nextAndPrevPagePath, { deep: false })
         // .only(['title', 'slug'])
+        .where({ disabled: { $ne: true } })
         .sortBy('createdAt', 'asc')
         .surround(currentPath)
         .fetch()
