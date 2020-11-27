@@ -4,7 +4,7 @@ title: ２年間使ってないKotlinを思いだしたい！
 description: 'KotlinでAndroidアプリ作ったり、Ktor触ったりしてたので思いだしたい！'
 eyecatchImage: ['/images/posts/kotori.jpg',1600,1066]
 thumbnailImage: ['/images/posts/sm/kotori.jpg',1600,1066]
-tags: ['Kotlin']
+tags: ['Kotlin','作成中']
 ---
 
 昔（２年ぐらい前に）、よく使っていたKotlinとJavaの記法をすっかり忘れているので
@@ -25,7 +25,7 @@ Javaのように、毎回毎回、定数にするときに`final`と書かなく
 
 ### Kotlinの場合
 
-Kotlinは、変数の宣言時にnullが入る可能性があるかを予め決めておくことで
+Kotlinは、変数の宣言時にnullが入る可能性があるか？を予め決めておくことで
 
 その変数の参照時にはnullチェックを強制（nullチェックがないとコンパイルエラーになる）して、
 
