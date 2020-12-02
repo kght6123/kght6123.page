@@ -1,98 +1,133 @@
 ---
 sortNo: 19
-title: 'Apple Silicon（M1）版Macの開発ツールの対応状況まとめ'
-description: 'Macでよく使っている開発ツールの対応状況をまとめました'
+title: 'Apple Silicon（M1）搭載 Macの開発ツールの対応状況と、インストール方法のまとめ'
+description: 'よく使っている開発ツールのM1の対応状況と、インストール方法をまとめました'
 eyecatchImage: ['/images/posts/helloworld.jpg',1600,1066]
 thumbnailImage: ['/images/posts/sm/helloworld.jpg',1600,1066]
 tags: ['Mac','作成中']
 ---
 
-11/18(水)現在、手元にM1版のMacは届いてないですが、
+Homebrewのユニバーサル版が出るまでは、Homebrewやportsは使わない！
 
-（11/24(水)現在、まだ届かない・・・・）
+なるべく、ARMネイティブを使う！その方がHomebrewに戻しやすいから！
 
-届き次第、自分がよく使う開発環境が整えられる様に備忘録的にまとめました。
+・・・という方針でまとめました。
 
-（注文後にスペックを変えて再注文したため、発売日にM1版のMacが届かずにしょんぼりしています・・・
+フロントエンドエンジニアなので、フロント成分多めです。
 
-まだ、届いてないので実際に検証はできてません。（届き次第、確認してく予定です。）
+## インストール＆設定方法
 
-あと、私がフロントエンドエンジニア寄りなので、フロント成分が多めです。
+### システム環境設定（おすすめ）
 
-## Homebrew
+早速、M1関係ないけど、スマートダッシュで検索して、二重引用符と一重引用符を`""`や`’’`に変えるといい感じ。
 
-Homebrew自体は、下記の手順でインストール可能みたいです。（未検証）
+勝手に、引用符がプログラムで認識しないものに変わるのを防げる
 
-https://github.com/Homebrew/brew/issues/7857#issuecomment-729341938
+### Bear メモ帳
 
-インストールできるアプリが動くか？については、下記のGithubのIssueにまとめられています。
+App Storeからインストールすれば、ARMネイティブ版でインストールされている
 
-https://github.com/Homebrew/brew/issues/7857
+iPhoneやiPadとの同期も問題なさそう
 
-Issueの「Status of core formulae」にあるアイコンの意味はこんな感じです。
+### Slack
 
+安定版はIntel版で動くので、ベータ版をインストールした（11/29現在）
+
+[Mac | ベータ版をダウンロード | Slack](https://slack.com/intl/ja-jp/beta/mac)
+
+大きな問題は起きていない
+
+### VSCode コードエディタ
+
+試験的バージョンなら、ARMネイティブで動く
+
+[Documentation for Visual Studio Code](https://code.visualstudio.com/docs/?dv=darwinarm64&build=insiders)
+
+プロジェクトを開いたり、Githubとの設定の同期もうまくいった。
+
+```sh
+# お好みでcodeコマンドのエイリアスを登録
+# 事前にVSCodeで、 ⌘ + Shift + P して shell と入力して、「Shell Command: install 'code-exploration' comannd in PATH」を選ぶ
+code-exploration -v # 1.52.0-exploration arm64
+echo "alias code=code-exploration" >> ~/.zshrc
+source ~/.zshrc
+code -v # 1.52.0-exploration arm64
 ```
-🥇は、Apple Silicon版でネイティブに動くもの
 
-🥈は、Rosetta2（互換）経由で動くもの
+### NVM Node.jsバージョン管理
 
-🥉は、一部の機能が動かないもの
+nvmをインストールして、nodeのv15のソースからのARMビルドをインストールする
+（installにそこそこ時間がかかります。）
 
-🚫は、Intel版のみで動くもの
-
-⚠️は、分析に時間がかかって未検証中？なもの
+```sh
+touch ~/.zshrc
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | zsh
+source ~/.zshrc
+nvm -v
+nvm install v15 # v15以外はARMネイティブで動かない（11/29現在）
+node -v # v15.3.0
+npm -v # 7.0.14
 ```
 
-node.jsが🥇で動くみたいなので一安心💦
+### IntellJ Idea 統合開発環境
 
-gitは⚠️なので、全く使えないわけではなさそう。
+[早期アクセスプログラム（EAP）- IntelliJ IDEA](https://www.jetbrains.com/ja-jp/idea/nextversion/#section=mac)
 
-## VS Code
+EAP版もIntelで動く、ARM版は無さそうです
 
-Insider版ならネイティブで動く様です。 https://code.visualstudio.com/docs/?dv=darwinarm64&build=insiders
+### Yarn パッケージマネージャ
 
-## IntelliJ Idea
+npmのグローバルインストールでインストールする。homebrewが使えないため。
 
-今は、Rosetta2（互換）で動く様です。
+```sh
+npm install -g yarn
+yarn -v # 1.22.10
+```
 
-Apple Silicon版でネイティブも開発中らしいです。
+### Firebase Tools（Yarn）
 
-## Atom / Deno / Docker
+先ほど、インストールした`yarn`でグローバルインストールする。
 
-現時点では動かない様です。残念。
+loginまでOK
 
-## OpenJDK
+```sh
+# yarnでインストール
+yarn global add firebase-tools
+# yarnのbinをPATHに追加して直ちに反映（zshの場合）
+echo "export PATH=\"\$PATH:\`yarn global bin\`\"" >> ~/.zshrc
+source ~/.zshrc
+firebase -V # 8.16.2
+# firebaseにログイン
+firebase login
+```
 
-Microsoft版のOpenJDKのEarlyBuildなら動く見たいです。
+### Gitコマンド
 
-https://github.com/microsoft/openjdk-aarch64/releases/tag/16-ea%2B10-macos
+もともと、デフォルトで入っているので、それを使う
 
-## Affinity Designer / ffinity Photo
+```sh
+git --version # git version 2.24.3 (Apple Git-128)
+git clone https://github.com/kght6123/kght6123.page.git
+```
 
-Apple Silicon版でネイティブに動く様です。すばら。
+### OpenJDK Java開発キット
 
-## Bear
+Zulu BuildのOpen JDKが対応しているので、それを使う。
 
-Markdownのメモ帳アプリです。現時点では動かず、次期バージョンで対応予定とのこと。残念。
+https://jp.azul.com/downloads/zulu-community/?os=macos&architecture=arm-64-bit&package=jdk#download-bundles
 
-## Slack
+JDK8（LTS）、JDK11（LTS）、JDK13（MTS）、JDK16（EA）がARMに対応している（12/2現在）
 
-現時点で安定版は動かず、Beta版ならRosetta2（互換）で動く様です。
+### Windowsのインストール
 
-https://slack.com/intl/ja-jp/beta/mac?geocode=ja-jp
+まだ、試せていない。いずれ公式にできるようになりそう。
 
-## Spark
+https://gigazine.net/news/20201128-windows-m1-mac-virtualization-demonstrated/
 
-愛用しているInbox風のメールアプリです。探してみたけど動くかどうか全く不明。
+## まとめ
 
-## Android Studio
+`Node`や`vscode`の起動が早すぎ！npmのバッケージの追加もビルドも早すぎぃ！
 
-IntelliJ Ideaベースなので、IntelliJ Ideaと同じくRosetta2（互換）で動く・・・はず。
+これは、Airで十分。私はProいらない。
 
-## その他
-
-この他にも、下記のGithubでまとめてくださって随時更新されている方がいます！ありがたや・・・ありがたや・・・
-
-https://github.com/ThatGuySam/doesitarm
-
-
+（Touchバーが無いのが寂しい）
