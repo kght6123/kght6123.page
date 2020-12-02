@@ -19,11 +19,11 @@ h1.post-title:first-letter {
   @apply text-6xl text-gray-100;
 }
 .nuxt-content h2 {
-  @apply border-gray-200 px-2;
+  @apply border-gray-200 px-2 mt-10;
   border-left: solid 5px;
 }
 .nuxt-content h3 {
-  @apply border-gray-200;
+  @apply border-gray-200 mt-8;
   border-bottom: dashed 2px;
 }
 .toc3 {
