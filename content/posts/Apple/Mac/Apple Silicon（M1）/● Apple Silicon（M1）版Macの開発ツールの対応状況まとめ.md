@@ -2,14 +2,14 @@
 sortNo: 19
 title: 'Apple Silicon（M1）搭載 Macの開発ツールの対応状況と、インストール方法のまとめ'
 description: 'よく使っている開発ツールのM1の対応状況と、インストール方法をまとめました'
-eyecatchImage: ['/images/posts/helloworld.jpg',1600,1066]
-thumbnailImage: ['/images/posts/sm/helloworld.jpg',1600,1066]
-tags: ['Mac','作成中']
+eyecatchImage: ['/images/posts/helloworld.jpg', 1600, 1066]
+thumbnailImage: ['/images/posts/sm/helloworld.jpg', 1600, 1066]
+tags: ['Mac', 'VSCode', 'Node.js', 'Git', 'JDK', 'Java', 'Chromium']
 ---
 
-Homebrewのユニバーサル版が出るまでは、Homebrewやportsは使わない！
+Homebrew のユニバーサル版が出るまでは、Homebrew や ports は使わない！
 
-なるべく、ARMネイティブを使う！その方がHomebrewに戻しやすいから！
+なるべく、ARM ネイティブを使う！その方が Homebrew に戻しやすいから！
 
 ・・・という方針でまとめました。
 
@@ -19,19 +19,19 @@ Homebrewのユニバーサル版が出るまでは、Homebrewやportsは使わ�
 
 ### システム環境設定（おすすめ）
 
-早速、M1関係ないけど、スマートダッシュで検索して、二重引用符と一重引用符を`""`や`’’`に変えるといい感じ。
+早速、M1 関係ないけど、スマートダッシュで検索して、二重引用符と一重引用符を`""`や`’’`に変えるといい感じ。
 
 勝手に、引用符がプログラムで認識しないものに変わるのを防げる
 
 ### Bear メモ帳
 
-App Storeからインストールすれば、ARMネイティブ版でインストールされている
+App Store からインストールすれば、ARM ネイティブ版でインストールされている
 
-iPhoneやiPadとの同期も問題なさそう
+iPhone や iPad との同期も問題なさそう
 
 ### Slack
 
-安定版はIntel版で動くので、ベータ版をインストールした（11/29現在）
+安定版は Intel 版で動くので、ベータ版をインストールした（11/29 現在）
 
 [Mac | ベータ版をダウンロード | Slack](https://slack.com/intl/ja-jp/beta/mac)
 
@@ -39,11 +39,11 @@ iPhoneやiPadとの同期も問題なさそう
 
 ### VSCode コードエディタ
 
-試験的バージョンなら、ARMネイティブで動く
+試験的バージョンなら、ARM ネイティブで動く
 
 [Documentation for Visual Studio Code](https://code.visualstudio.com/docs/?dv=darwinarm64&build=insiders)
 
-プロジェクトを開いたり、Githubとの設定の同期もうまくいった。
+プロジェクトを開いたり、Github との設定の同期もうまくいった。
 
 ```sh
 # お好みでcodeコマンドのエイリアスを登録
@@ -54,10 +54,10 @@ source ~/.zshrc
 code -v # 1.52.0-exploration arm64
 ```
 
-### NVM Node.jsバージョン管理
+### NVM Node.js バージョン管理
 
-nvmをインストールして、nodeのv15のソースからのARMビルドをインストールする
-（installにそこそこ時間がかかります。）
+nvm をインストールして、node の v15 のソースからの ARM ビルドをインストールする
+（install にそこそこ時間がかかります。）
 
 ```sh
 touch ~/.zshrc
@@ -73,11 +73,11 @@ npm -v # 7.0.14
 
 [早期アクセスプログラム（EAP）- IntelliJ IDEA](https://www.jetbrains.com/ja-jp/idea/nextversion/#section=mac)
 
-EAP版もIntelで動く、ARM版は無さそうです
+EAP 版も Intel で動く、ARM 版は無さそうです
 
 ### Yarn パッケージマネージャ
 
-npmのグローバルインストールでインストールする。homebrewが使えないため。
+npm のグローバルインストールでインストールする。homebrew が使えないため。
 
 ```sh
 npm install -g yarn
@@ -88,7 +88,7 @@ yarn -v # 1.22.10
 
 先ほど、インストールした`yarn`でグローバルインストールする。
 
-loginまでOK
+login まで OK
 
 ```sh
 # yarnでインストール
@@ -101,7 +101,7 @@ firebase -V # 8.16.2
 firebase login
 ```
 
-### Gitコマンド
+### Git コマンド
 
 もともと、デフォルトで入っているので、それを使う
 
@@ -110,24 +110,36 @@ git --version # git version 2.24.3 (Apple Git-128)
 git clone https://github.com/kght6123/kght6123.page.git
 ```
 
-### OpenJDK Java開発キット
+### OpenJDK Java 開発キット
 
-Zulu BuildのOpen JDKが対応しているので、それを使う。
+Zulu Build の Open JDK が対応しているので、それを使う。
 
 https://jp.azul.com/downloads/zulu-community/?os=macos&architecture=arm-64-bit&package=jdk#download-bundles
 
-JDK8（LTS）、JDK11（LTS）、JDK13（MTS）、JDK16（EA）がARMに対応している（12/2現在）
+JDK8（LTS）、JDK11（LTS）、JDK13（MTS）、JDK16（EA）が ARM に対応している（12/2 現在）
 
-### Windowsのインストール
+### Windows のインストール
 
 まだ、試せていない。いずれ公式にできるようになりそう。
 
 https://gigazine.net/news/20201128-windows-m1-mac-virtualization-demonstrated/
 
+### Chromium のインストール
+
+有志の人がビルドして公開されているモジュールを入れる。今現在、公式の Chromium の ARM 版はない。
+
+https://github.com/macchrome/chromium/releases/tag/v86.0.4218.0-r793075-macOS
+
+### Silicon Info
+
+ARM ネイティブ、または、Rosetta2 互換で動いてるか、メニューバーにアイコンで表示してくれる
+
+https://apps.apple.com/jp/app/silicon-info/id1542271266
+
 ## まとめ
 
-`Node`や`vscode`の起動が早すぎ！npmのバッケージの追加もビルドも早すぎぃ！
+`Node`や`VSCode`の起動が早すぎ！npm のバッケージの追加もビルドも早すぎぃ！
 
-これは、Airで十分。私はProいらない。
+これは、Air で十分。私は Pro いらない。
 
-（Touchバーが無いのが寂しい）
+（Touch バーが無いのが寂しい）
