@@ -2,22 +2,22 @@
 sortNo: 9
 title: 'nuxt/tailwindモジュールでSCSSを使ってBEM記法を楽に書く'
 description: 'TailwindでBEM記法を使ったCSSを書くことが多いので、SCSSを使って楽にしました'
-eyecatchImage: ['/images/posts/nuxt-tailwind-logo.png',1280,640]
-thumbnailImage: ['/images/posts/sm/nuxt-tailwind-logo.png',1280,640]
+eyecatchImage: ['/images/posts/nuxt-tailwind-logo.png', 1280, 640]
+thumbnailImage: ['/images/posts/sm/nuxt-tailwind-logo.png', 1280, 640]
 tags: ['Nuxt.js', 'Tailwind.css', 'BEM', 'SCSS']
 ---
 
-BEMの記法でCSSを書くときに、SCSSが使えるとコードを書く量が少なくなるので
+BEM の記法で CSS を書くときに、SCSS が使えるとコードを書く量が少なくなるので
 
-nuxt/tailwindモジュールでSCSSを使う方法を備忘録代わりにまとめました。
+nuxt/tailwind モジュールで SCSS を使う方法を備忘録代わりにまとめました。
 
 ## 1. assets\css\tailwind.css ファイルの拡張子を scss に変える
 
 そのままの意味です、ファイルの拡張子を scss に変えます。
 
-## 2. nuxt.config.js nuxt/tailwindモジュールの設定を追加する
+## 2. nuxt.config.js nuxt/tailwind モジュールの設定を追加する
 
-下記のような設定を、nuxt.config.jsに追記します。
+下記のような設定を、nuxt.config.js に追記します。
 
 ```json
 /*
@@ -39,7 +39,7 @@ or
 yarn add -D node-sass sass-loader # yarnのとき
 ```
 
-## 4. assets\css\tailwind.scss の中にBEM記法で、cssを書く
+## 4. assets\css\tailwind.scss の中に BEM 記法で、css を書く
 
 こんな感じで書きます。
 
@@ -48,26 +48,33 @@ yarn add -D node-sass sass-loader # yarnのとき
 コードを書く量が少なくなる。
 
 ```scss
-.block { /* block */
+.block {
+  /* block */
   color: #fff;
   width: 100%;
-  &__element1 { /* element */
+  &__element1 {
+    /* element */
     width: 30px;
-    &_modifier1 { /* modifier */
+    &_modifier1 {
+      /* modifier */
       background-color: #ccc;
     }
-    &_modifier2 { /* modifier */
+    &_modifier2 {
+      /* modifier */
       background-color: #111;
-      &_modifier3 { /* modifier */
+      &_modifier3 {
+        /* modifier */
         color: #ddd;
       }
-      &_modifier4 { /* modifier */
+      &_modifier4 {
+        /* modifier */
         color: #ccc;
       }
     }
   }
-  &__element2 { /* element */
-      width: 60px;
+  &__element2 {
+    /* element */
+    width: 60px;
   }
 }
 ```
@@ -77,4 +84,3 @@ yarn add -D node-sass sass-loader # yarnのとき
 - [nuxt/tailwind Options](https://tailwindcss.nuxtjs.org/options#csspath)
 
 - [Nuxt.js The css Property](https://nuxtjs.org/guides/configuration-glossary/configuration-css)
-
