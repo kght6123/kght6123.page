@@ -5,6 +5,7 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
+  mode: 'jit',
   theme: {
     fontSize: {
       'xxs': '.65rem',
@@ -32,5 +33,6 @@ module.exports = {
       'plugins/**/*.js',
       'nuxt.config.js'
     ]
-  }
+  },
+  darkMode: 'media', // or 'media' or 'class'
 }

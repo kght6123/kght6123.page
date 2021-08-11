@@ -1,6 +1,6 @@
 # kght6123.page
 
-Full-AMPの静的サイト（ブログ）がマークダウンで作れる、静的サイトジェネレーター
+Full-AMP の静的サイト（ブログ）がマークダウンで作れる、静的サイトジェネレーター
 
 ## Initial Setup
 
@@ -35,20 +35,24 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Road Map
 
-- [x] 画像の差し替えとHostingへ追加
+- [x] 画像の差し替えと Hosting へ追加
 - [x] アイキャッチ画像の表示
-- [x] 全体のmetaタグの見直しとページ別の設定
+- [x] 全体の meta タグの見直しとページ別の設定
 - [x] プロフィールページの作成
-- [x] PC向けにレイアウト調整
+- [x] PC 向けにレイアウト調整
 - [x] 過去記事（Markdown）を移行
 - [ ] ライトモードに対応（現在はダークモード）
 - [ ] ストラクチャードデータに対応 https://developers.google.com/search/docs/data-types/article
-- [ ] Googleアナリティクスを設定
-- [ ] Adsを設定
+- [ ] Google アナリティクスを設定
+- [ ] Ads を設定
 - [ ] ソースコードの整理と見直し
 - [ ] 全文検索をできるようにする？？（amp-script？）
 
-## Project構築時のメモ
+## 注意
+
+2021/8/12 現在、` "@nuxtjs/amp": "^0.3.0",` の upgrade は禁止、 tailwindcss が効かなくなる
+
+## Project 構築時のメモ
 
 ```sh
 ~/develop % yarn create nuxt-app kght6123.page
@@ -87,7 +91,7 @@ yarn dev # 動作確認
 yarn generate # 静的ファイル作成
 ```
 
-firebaseに新しいプロジェクトを作成(kght6123.page)
+firebase に新しいプロジェクトを作成(kght6123.page)
 
 ```sh
 yarn global add firebase-tools
@@ -97,7 +101,7 @@ firebase login # 表示されたURLをブラウザで開いて、Firebaseのプ�
 firebase init
 # Hostingを選択する
 # Firebaseプロジェクトを選択する（あらかじめ作っておいたので、既存のFirebaseぷろじぇくとから選ぶ「 Use an existing project」をせんたく
-# 
+#
 ~/develop/kght6123.page % firebase init
 
      ######## #### ########  ######## ########     ###     ######  ########
@@ -145,17 +149,17 @@ Hosting URL: https://kght6123-page.web.app
 # さいごに表示されるHosting URLにブラウザでアクセス！
 ```
 
-Google Domainsで購入したドメインでアクセスできるようにする
+Google Domains で購入したドメインでアクセスできるようにする
 
-Firebase ConsoleのHostingを開いて、カスタムドメインを追加をクリック
+Firebase Console の Hosting を開いて、カスタムドメインを追加をクリック
 
 購入したドメイン（kght6123.page）を入力する、「次へ」をクリック
 
 「クイックセットアップ」になっていることを確認して「終了」
 
-Google Domainsを表示して、ひとつのAレコードにIPアドレス（２つ）を追加する
+Google Domains を表示して、ひとつの A レコードに IP アドレス（２つ）を追加する
 
-（カスタムドメインのステータスが「設定が必要です」になっているので、「表示」をクリックするとIPアドレスが表示される）
+（カスタムドメインのステータスが「設定が必要です」になっているので、「表示」をクリックすると IP アドレスが表示される）
 
 ## AMP Validator
 
@@ -207,4 +211,3 @@ https://amp.dev/documentation/components/amp-pan-zoom/
 ## amp-recaptcha-input
 
 https://amp.dev/documentation/components/amp-recaptcha-input
-

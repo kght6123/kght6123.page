@@ -2,12 +2,13 @@
   <li>
     <nuxt-link class="block pb-2" :to="`${item.path}`">
       {{ item.title }}
-      <atom-amp-timeago
+      <atoms-atom-amp-timeago
         :datetime="item.updatedAt"
         layout="fixed"
         :width="56"
         :height="16"
-        class="align-text-bottom ml-3" />
+        class="ml-3 align-text-bottom"
+      />
     </nuxt-link>
   </li>
 </template>
@@ -17,8 +18,8 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
-  }
+  },
 }
 </script>

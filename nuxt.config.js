@@ -6,11 +6,7 @@ const modifyHtml = (html) => {
 }
 
 export default {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
+  ssr: true,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -87,6 +83,8 @@ export default {
     '@nuxtjs/tailwindcss',
     // Doc: https://github.com/nuxt-community/fontawesome-module
     '@nuxtjs/fontawesome',
+    // Doc: https://github.com/nuxt/components
+    '@nuxt/components',
   ],
   /*
    ** FontAwesome module
@@ -140,7 +138,13 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    babel: {
+      presets({ isServer }, [preset, options]) {
+        options.loose = true
+      },
+    },
+  },
   // router: {
   //   prefetchLinks: false
   // },
