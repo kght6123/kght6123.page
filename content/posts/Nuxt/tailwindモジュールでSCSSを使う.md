@@ -4,7 +4,7 @@ title: 'nuxt/tailwindモジュールでSCSSを使ってBEM記法を楽に書く'
 description: 'TailwindでBEM記法を使ったCSSを書くことが多いので、SCSSを使って楽にしました'
 eyecatchImage: ['/images/posts/nuxt-tailwind-logo.png', 1280, 640]
 thumbnailImage: ['/images/posts/sm/nuxt-tailwind-logo.png', 1280, 640]
-tags: ['Nuxt.js', 'Tailwind.css', 'BEM', 'SCSS']
+tags: ['Nuxt.js', 'Tailwind CSS', 'BEM', 'SCSS']
 ---
 
 BEM の記法で CSS を書くときに、SCSS が使えるとコードを書く量が少なくなるので

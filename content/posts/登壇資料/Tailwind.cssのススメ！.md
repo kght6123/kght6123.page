@@ -1,13 +1,13 @@
 ---
 sortNo: 20
-title: Tailwind.cssのススメ！
+title: Tailwind CSSのススメ！
 description: '某LT会で11/24に登壇した時の資料です！'
 eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
 thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
-tags: ['CSS', 'Tailwind.css']
+tags: ['CSS', 'Tailwind CSS']
 ---
 
-Tailwind.css の概要やメリット・デメリット、使い所について、しゃべりました。
+Tailwind CSS の概要やメリット・デメリット、使い所について、しゃべりました。
 
 （Keynote の制限で一部の動画が再生できなくなってます。）
 
