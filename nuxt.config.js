@@ -24,7 +24,7 @@ export default {
     titleTemplate: '%s - kght6123.page',
     title: 'げぐはつぺーじ',
     meta: [
-      { charset: 'utf-8' },
+      // { charset: 'utf-8' },
       {
         hid: 'viewport',
         name: 'viewport',
