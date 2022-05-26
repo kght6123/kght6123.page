@@ -21,10 +21,6 @@ tags:
 
 ボタンの定義だけで、日本語を含む文字の判定が不要になります。
 
-![](images/21687766_1971012336478872_8492298609952628292_n1.jpg)
-
-はっぴ
-
 Strutsは昔のフレームワークですが、まだ一部で広く使われています。。。
 
 https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=test.jsp https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=TestForm.java https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=TestAction.java

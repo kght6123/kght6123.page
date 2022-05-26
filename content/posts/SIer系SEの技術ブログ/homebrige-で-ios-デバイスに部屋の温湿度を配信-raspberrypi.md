@@ -46,6 +46,6 @@ https://gist.github.com/kght6123/b6dc512497cccf762611fc1014ee09d9#file-check-usb
 
 最後まで閲覧いただき、ありがとうございます！
 
-![](images/screen-01-169x300.png)
+<amp-img src="/images/posts/sier-se/screen-01-169x300.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 [ソースコード](https://github.com/kght6123/homebridge-temper)  [npm](https://www.npmjs.com/package/homebridge-temper)

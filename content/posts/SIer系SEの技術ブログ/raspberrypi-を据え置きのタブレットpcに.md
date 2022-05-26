@@ -25,7 +25,7 @@ SDカード内の写真と動画を家庭内のNASに自動転送したり、、
 
 古めの東芝SSDを、一番下の段に内蔵しました。
 
-![](images/IMG_0690_mini-1024x768.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0690_mini-1024x768.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 Amazonで購入した[SATA⇒USB3.0変換](https://amzn.to/2oa43fP)で、RaspberryPiに接続しましたが、
 
@@ -47,11 +47,11 @@ Amazonで買った、[Ewinミニキーボード](https://amzn.to/2obGfYY)も追�
 
 こんな感じで利用してます。
 
-![](images/IMG_0701_mini-1024x768.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0701_mini-1024x768.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 後ろから見たら、こんな感じ。
 
-![](images/IMG_0697_mini-1024x768.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0697_mini-1024x768.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 このミニキーボードは、ちょっとGUIでRaspberryPiを操作したい時に捗ります。
 
@@ -61,7 +61,7 @@ Amazonで買った、[Ewinミニキーボード](https://amzn.to/2obGfYY)も追�
 
 AmazonでEwinミニキーボードを買った方が安いです。
 
-![](images/IMG_0705_mini-1024x768.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0705_mini-1024x768.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 ## タッチパネルのセットアップについて
 
@@ -77,10 +77,16 @@ https://gist.github.com/kght6123/2227b712b1530b1f8a6aeb7c7a82871c
 
 リンク先はKSYです。
 
- [![](images/7inch_hdmi_lcd_h_with_case_.jpg) ディスプレイ 7" タッチパネル 1024×600 HDMI+USB for Pi (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/440/pdp.open/440)
+ <amp-img src="/images/posts/sier-se/7inch_hdmi_lcd_h_with_case_.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
+ 
+[ディスプレイ 7" タッチパネル 1024×600 HDMI+USB for Pi (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/440/pdp.open/440)
 
- [![](images/Quattro_red.jpg) Piケース Quattro（クアトロ） 赤 for 3B+/3/2/B+ (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/421/pdp.open/421)
+<amp-img src="/images/posts/sier-se/Quattro_red.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
- [![](images/RaspberryPi3_B_plus_min.jpg) Raspberry Pi 3 Model B+ (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/435/pdp.open/435)
+[Piケース Quattro（クアトロ） 赤 for 3B+/3/2/B+ (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/421/pdp.open/421)
+
+<amp-img src="/images/posts/sier-se/RaspberryPi3_B_plus_min.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
+
+[Raspberry Pi 3 Model B+ (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/435/pdp.open/435)
 
 [USB電源アダプター 5V/3A 1.5m microUSBコネクター (KSY)](https://raspberry-pi.ksyic.com/main/index/pdp.id/436/pdp.open/436)

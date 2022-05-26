@@ -59,15 +59,15 @@ Microsoftアカウントに登録し、[Insider Previewのページ](https://www
 
 DVDに焼くか、別のUSBメモリやディスク、NASに置いておくと、再ダウンロードの手間が省けます。
 
-![](images/12.png)
+<amp-img src="/images/posts/sier-se/12.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 あとは、Bootcampアシスタント（⌘＋スペースで検索）を起動し、下記の様にウィザードの指示に従います。
 
-- ![](images/6103f1da6d7959e978b1c9fb127a2171.jpg)
+- <amp-img src="/images/posts/sier-se/6103f1da6d7959e978b1c9fb127a2171.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/afa1371af4fa7380aeef4f52a36e4c96.jpg)
+- <amp-img src="/images/posts/sier-se/afa1371af4fa7380aeef4f52a36e4c96.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/a2c47bc8c4524532f10eeb81f666588d.jpg)
+- <amp-img src="/images/posts/sier-se/a2c47bc8c4524532f10eeb81f666588d.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
 
 インストールが完了すると、Windowsが起動するので、初期設定を済ませて、デスクトップを表示させてください。
@@ -82,40 +82,40 @@ Windows To Goのインストール（ワークスペースの作成）
 
 焼いたDVDを入れるか、別のUSBメモリやディスク、NAS上のISOファイルを右クリックして、「マウント」を選択します。
 
-![](images/03.png)
+<amp-img src="/images/posts/sier-se/03.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 ISOのマウントがWindowsで出来る
 
 コントロールパネルを開き、大きいアイコンに表示を変えて、「Windows To Go」を選択します。
 
-![](images/01.jpg)
+<amp-img src="/images/posts/sier-se/01.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 大きいアイコンにしないと表示されない
 
 Windows To Go ワークスペースの作成ウィザードが開くので、ウィザードに従って必要事項を入力します。
 
-![](images/02.png)
+<amp-img src="/images/posts/sier-se/02.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 使用するドライブを選ぶ
 
-![](images/04.png)
+<amp-img src="/images/posts/sier-se/04.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 Windows 10 Enterpriseを選択する
 
-![](images/05.png)
+<amp-img src="/images/posts/sier-se/05.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 今回はBitLockerを使用しない（スキップを押下）
 
-![](images/06.png)
+<amp-img src="/images/posts/sier-se/06.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 作成を押下  
 （フォーマットを試みるとエラーが出ることがある、気にしない）
 
-![](images/08.png)
+<amp-img src="/images/posts/sier-se/08.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 作成（インストール）が終わるまで待つ
 
-![](images/11.png)
+<amp-img src="/images/posts/sier-se/11.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 作成が完了すると、最後にブートオプションの選択があるが、「いいえ」を選ぶ
 
@@ -127,7 +127,7 @@ Windows To Goを起動
 
 Windows（Bootcamp）ではなく、EFI Bootを選択します。
 
-![](images/IMG_0774.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0774.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 Windows To GoでWindows 10が起動するので、セットアップを行いますが、ドライバーがインストールされていないため、
 
@@ -149,27 +149,22 @@ Windows To Go側が使いたいときは、USB-SSDを挿して、Macをシャッ
 
 起動したらこんな感じ
 
-![](images/99.jpg)
+<amp-img src="/images/posts/sier-se/99.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
-![](images/IMG_0776.jpg)
+<amp-img src="/images/posts/sier-se/IMG_0776.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 最後に利用した機器のAmazonへのリンクを貼っておきます。
 
 EwinやInateckのものはプライムデーで安く手に入れました。
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&amp;t=kght6123-22&amp;m=amazon&amp;o=9&amp;p=8&amp;l=as1&amp;IS1=1&amp;detail=1&amp;asins=B079KCS2X7&amp;linkId=285ef7974d58a75fcca13e937ce992eb&amp;bc1=ffffff&amp;lt1=_top&amp;fc1=333333&amp;lc1=0066c0&amp;bg1=ffffff&amp;f=ifr"></iframe>
+Ewin ミニ キーボード
+https://www.amazon.co.jp/dp/B079KCS2X7/
 
- 
+Inateck SATA-USB 3.0 変換アダプタケーブル
+https://www.amazon.co.jp/dp/B01I4H2M42/
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&amp;t=kght6123-22&amp;m=amazon&amp;o=9&amp;p=8&amp;l=as1&amp;IS1=1&amp;detail=1&amp;asins=B01I4H2M42&amp;linkId=z7b5638deb81af5805803e8dc94cfdez&amp;bc1=FFFFFF&amp;lt1=_top&amp;fc1=333333&amp;lc1=0066C0&amp;bg1=FFFFFF&amp;f=ifr"></iframe>
-
- 
-
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&amp;t=kght6123-22&amp;m=amazon&amp;o=9&amp;p=8&amp;l=as1&amp;IS1=1&amp;detail=1&amp;asins=B00ZA1L67U&amp;linkId=740e43086fc6326ccf67aa2ae1a32bb5&amp;bc1=ffffff&amp;lt1=_top&amp;fc1=333333&amp;lc1=0066c0&amp;bg1=ffffff&amp;f=ifr"></iframe>
-
- 
-
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&amp;t=kght6123-22&amp;m=amazon&amp;o=9&amp;p=8&amp;l=as1&amp;IS1=1&amp;detail=1&amp;asins=B07CZC1F3D&amp;linkId=7a6f73bdb01ae96cf260a6eaf2c2ae5a&amp;bc1=ffffff&amp;lt1=_top&amp;fc1=333333&amp;lc1=0066c0&amp;bg1=ffffff&amp;f=ifr"></iframe>
+Apple USB-C - USBアダプタ
+https://www.amazon.co.jp/dp/B00ZA1L67U/
 
 後、ライセンス認証がうまく行われない場合は、[Microsoftアカウントの関連付け](https://insider.windows.com/ja-jp/getting-started/)や、
 

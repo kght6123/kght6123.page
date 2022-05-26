@@ -12,6 +12,12 @@ echo "export PATH=\"\$PATH:\`yarn global bin\`\"" >> ~/.zshrc
 source ~/.zshrc
 # firebaseにログイン
 firebase login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
+# 開発モードでローカル起動
+yarn dev
+# Firebaseでローカル起動
+yarn serve
+# Firebaseにデプロイ
+yarn deploy
 ```
 
 ## Build Setup
@@ -51,6 +57,24 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ## 注意
 
 2021/8/12 現在、` "@nuxtjs/amp": "^0.3.0",` の upgrade は禁止、 tailwindcss が効かなくなる
+
+## WordPress から移行するメモ
+
+https://github.com/lonekorean/wordpress-export-to-markdown
+
+```sh
+npx wordpress-export-to-markdown --input "slerse.WordPress.2022-05-26.xml" --output "slerse-md" --post-folders false --include-other-types true
+```
+
+画像を置換する
+
+!\[\]\(images\/(.+\.jpg)|(.+\.png)\)
+
+<amp-img src="/images/posts/sier-se/$1" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
+
+content/posts/過去ブログ
+
+
 
 ## Project 構築時のメモ
 

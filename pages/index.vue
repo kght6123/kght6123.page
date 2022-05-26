@@ -77,6 +77,7 @@ export default {
       .$content('/', { deep: true })
       .where({ disabled: { $ne: true } })
       .sortBy('sortNo', 'desc')
+      .sortBy('date', 'desc')
       .fetch()
 
     this.newPosts = newPosts

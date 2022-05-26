@@ -63,13 +63,13 @@ Mac側で、Workspaceだけ作成します。
 
 Workspace作成にも時間がかかりますので、気長に待ちましょう。
 
-![](images/0abcb2fd3f68ae8f964d33ee0e3fac9d-1024x823.png)
+<amp-img src="/images/posts/sier-se/0abcb2fd3f68ae8f964d33ee0e3fac9d-1024x823.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 iPadとMacの両方の画面が**リアルタイムに更新**されます！
 
 とりあえず、**「Hello world」**が動きましたー！
 
-![](images/0f2fe697ec4dc5f7c3bdef6317da3e07-1024x802.png)
+<amp-img src="/images/posts/sier-se/0f2fe697ec4dc5f7c3bdef6317da3e07-1024x802.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 これで、完了です！
 

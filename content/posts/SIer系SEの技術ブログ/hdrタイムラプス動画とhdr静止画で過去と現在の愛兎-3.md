@@ -42,19 +42,19 @@ https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=08\_creat
 
 今回は、愛兎の監視に利用しますが、HDR合成しているので風景などコントラストが高いものの長時間撮影に利用すると、綺麗かもしれません。
 
-![](images/fusion_mertens_0001.jpg)
+<amp-img src="/images/posts/sier-se/fusion_mertens_0001.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 HDR合成した画像
 
-- ![](images/picture0-1.jpg)
+<amp-img src="/images/posts/sier-se/picture0-1.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture1.jpg)
+<amp-img src="/images/posts/sier-se/picture1.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture2.jpg)
+<amp-img src="/images/posts/sier-se/picture2.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture3.jpg)
+<amp-img src="/images/posts/sier-se/picture3.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture4.jpg)
+<amp-img src="/images/posts/sier-se/picture4.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
 
 次回は、Microsoft Onedriveに作成したHDR静止画と、タイムラプス動画をアップロードします。

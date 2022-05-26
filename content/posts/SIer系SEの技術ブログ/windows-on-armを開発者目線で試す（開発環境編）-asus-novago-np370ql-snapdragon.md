@@ -56,7 +56,7 @@ Javaは、特に**Orqcle JDK8**が2020年の終わりまでのサポートのた
 
 残り時間が思ったより、かなり長いです。
 
-![](images/20180731_buttery-time-300x143.png)
+<amp-img src="/images/posts/sier-se/20180731_buttery-time-300x143.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 やはり動画22時間再生は伊達じゃなかった。。。
 

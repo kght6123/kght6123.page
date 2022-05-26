@@ -83,7 +83,7 @@ https://gist.github.com/kght6123/31af2a480559e0b70735fbcf13a7fac0?file=08\_timez
 
 Macから下記のような感じで、アクセスできます。
 
-![](images/6a5e12bab63dfa08270030cb97be328c-1024x832.png)
+<amp-img src="/images/posts/sier-se/6a5e12bab63dfa08270030cb97be328c-1024x832.png" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
 
 ### 2018/7/29 追記
 

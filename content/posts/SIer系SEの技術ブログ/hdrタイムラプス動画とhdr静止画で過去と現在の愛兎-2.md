@@ -54,15 +54,15 @@ https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=06\_call\
 
 最後にこんな感じの５枚の明るさの異なる画像が撮れます。（写真に色々見えますが気にしない）
 
-- ![](images/picture0-1.jpg)
+<amp-img src="/images/posts/sier-se/picture0-1.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture1.jpg)
+<amp-img src="/images/posts/sier-se/picture1.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture2.jpg)
+<amp-img src="/images/posts/sier-se/picture2.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture3.jpg)
+<amp-img src="/images/posts/sier-se/picture3.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
-- ![](images/picture4.jpg)
+<amp-img src="/images/posts/sier-se/picture4.jpg" layout="intrinsic" width="2511" height="1137" class="block"></amp-img>
     
 
 次は、OpenCVでHDR合成を行い、ffmpegでタイムラプス動画を作成します。
