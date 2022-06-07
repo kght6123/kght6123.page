@@ -42,7 +42,23 @@ jmapコマンドを使って取得する方法の二つがあります。
 
 バッチファイルの内容はこんな感じです。
 
-https://gist.github.com/kght6123/ccf92de94a12eece64efea9e5924e99a
+```bat
+rem heapdump.bat
+@echo off
+
+SET /P "NAME=名前を入力してください>"
+SET /P "PID=PIDを入力してください>"
+
+set TIME_TMP=%time: =0%
+set NOW=%date:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2%
+
+%JAVA_HOME%\bin\jmap.exe "-dump:format=b,file=%~dp0\heapdump-%PID%-%NAME%-%NOW%.hprof" %PID%
+
+rem -Fを付けると強制
+rem %JAVA_HOME%\bin\jmap.exe "-F" "-dump:format=b,file=%~dp0\heapdump-%PID%-%NAME%-%NOW%.hprof" %PID%
+
+@echo on
+```
 
 簡単で申し訳ない。。。。
 

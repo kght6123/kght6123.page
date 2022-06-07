@@ -17,4 +17,95 @@ ServletとJQueryでCookieをやり取りするレガシーな処理です。 **C
 
 ダウンロード中に表示されるプログレスボタンは、JQuery-UIのプログレスを想定しています。
 
-https://gist.github.com/kght6123/544a3a71525435c425adf6141795d684
+
+```js
+// file-download.js
+
+// セッションIDから、ファイル作成処理毎の一意のキーを作る
+var downloaded_key = "downloaded@"+"<%=session.getId() %>";
+var downloading = false;
+
+// clickイベント設定（"id="は同じIDが複数存在した場合、通常は"#"で良い）
+$("[id=btn-excel]",parent.document).click(function() {
+	
+	downloading = true;
+	
+	// 通常ボタンを非表示に
+	$('[id=btn-excel]',parent.document).hide();
+	
+	// プログレスボタンを表示に
+	$('[id=progress-excel]',parent.document).show();
+	
+	// 前回のキーをリセット（消去）
+	$.removeCookie(downloaded_key, { path: "/" });
+	
+	// ファイル作成処理をリクエスト（サブミット）
+	$('#excel-form').submit();
+});
+
+
+$("#excel-form").submit(function() {
+	// ダウンロードキーがCookieに保存された（ファイル作成処理完了）か、1秒毎にチェックする
+	var timerId = setInterval(function() {
+			if($.cookie(downloaded_key))
+			{
+				// キーをリセット（消去）
+				$.removeCookie(downloaded_key, { path: "/" });
+				
+				// プログレスボタンを非表示に
+				$('[id=progress-excel]', parent.document).hide();
+				
+				// 通常ボタンを表示に
+				$('[id=btn-excel]', parent.document).show();
+				
+				downloading = false;
+				
+				// チェックをやめる
+				clearInterval(timerId);
+			}
+		}, 1000
+	);
+});
+```
+
+```jsp
+file-download.jsp
+<button id="progress-excel" />
+<button id="btn-excel" />
+```
+
+```java
+// ダウンロード完了をCookieで保存
+CookieUtil.saveCookie("downloaded@"+structure.getSession().getId(), "true", -1, structure.getResponse(), structure.getLogger());
+```
+
+
+```java
+// CookieUtil.java
+
+/**
+ * Cookieへ値を保存する
+ * 
+ * @param key
+ * @param value
+ * @param response
+ * @param logger
+ */
+public static void saveCookie
+(
+	final String key,
+	final String value,
+	final int maxAge,
+	final HttpServletResponse response,
+	final Logger logger
+)
+{
+	if(StringUtils.isEmpty(value))
+		return;
+	
+	final Cookie cookie = new Cookie(key, value);
+	cookie.setMaxAge(maxAge);
+	cookie.setPath("/");
+	response.addCookie(cookie);
+}
+```

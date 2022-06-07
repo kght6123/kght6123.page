@@ -30,21 +30,52 @@ RaspberryPiにDNSサーバ入れるのも、めんどくさい、、、
 
 （別のraspberrypiがあると複数該当するので注意）
 
-https://gist.github.com/kght6123/1355c75b8906d9c8778f288f7d8c7f2a?file=ip-search.sh
+```sh
+# 初期のraspberrypiホスト名のIPを検索
+% dns-sd -q raspberrypi.local
+DATE: ---Sat 16 Jun 2018---
+15:19:44.773 ...STARTING...
+Timestamp A/R Flags if Name Type Class Rdata
+15:19:44.940 Add 2 12 raspberrypi.local. Addr IN 192.168.10.106
+
+% rm ~/.ssh/known_hosts # 過去の認証ファイルを削除（稀に問題が出る）
+
+# とりあえず、検索したIPまたはホスト名でログイン
+% ssh pi@192.168.10.106 
+```
 
 次にhostnameとhostsファイルを開いて、**ホスト名を`raspberrypi`から`pi3j`など、任意****のホスト名に置き換え**ます。
 
 ホスト名は短くて区別がつく方が色々と便利なので、私はそうしてます。
 
-https://gist.github.com/kght6123/1355c75b8906d9c8778f288f7d8c7f2a?file=change-hostname.sh
+```sh
+$ sudo vi /etc/hostname # raspberrypi から 任意のホスト名に変更
+$ sudo vi /etc/hosts # raspberrypi から 任意のホスト名に変更
+$ sudo reboot # 再起動
+```
 
 もう一度、SSHで接続して、**avahi-daemonをインストールし、起動**します。
 
-https://gist.github.com/kght6123/1355c75b8906d9c8778f288f7d8c7f2a?file=install-avahi.sh
+```sh
+# 必要モジュールのインストール
+$ sudo apt-get install git make g++
+$ sudo apt-get install libavahi-compat-libdnssd-dev
+$ sudo apt-get install avahi-daemon avahi-discover libnss-mdns
+
+# avahiのインストール
+$ sudo service dbus start
+$ sudo service avahi-daemon start
+```
 
 ってすると、次からこんな感じで、sshログインできます。
 
-https://gist.github.com/kght6123/1355c75b8906d9c8778f288f7d8c7f2a?file=ssh-login-hostname.sh
+```sh
+% hostname # 事前にMacのホスト名を調べる
+macbook.local
+
+# 他の端末からMacへSSH
+$ ssh kght@macbook.local
+```
 
 Macには、**標準でマルチキャストDNS（Bonjour）がインストール**されており、
 
@@ -52,7 +83,9 @@ Macには、**標準でマルチキャストDNS（Bonjour）がインストー�
 
 （IP探す時に、**Bonjour使ってます**）
 
-https://gist.github.com/kght6123/1355c75b8906d9c8778f288f7d8c7f2a?file=ssh-login-hostname-mac.sh
+```sh
+% ssh pi@pi3j.local # 末尾に.localをつける
+```
 
 簡単です！
 

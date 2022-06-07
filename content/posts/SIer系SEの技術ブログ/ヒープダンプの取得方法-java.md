@@ -17,4 +17,12 @@ tags:
     
 3. 手動取得を簡単に行う（Windows）Javaのパスとか環境に合わせて適宜変えてください。
 
-https://gist.github.com/kght6123/bbe6c2e102f9a3b8f7eab19ab8c9a87a
+```bat
+rem jheapdump.bat
+@echo off
+SET /P "NAME=名前を入力してください>"
+SET /P "PID=PIDを入力してください>"
+C:\java\7\jdk1.7.0_67\bin\jmap.exe "-dump:format=b,file=%~dp0\heapdump-%PID%-%NAME%.hprof" %PID%
+rem C:\java\7\jdk1.7.0_67\bin\jmap.exe "-F" "-dump:format=b,file=%~dp0\heapdump-%PID%-%NAME%.hprof" %PID%
+@echo on
+```

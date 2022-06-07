@@ -23,4 +23,59 @@ tags:
 
 Strutsは昔のフレームワークですが、まだ一部で広く使われています。。。
 
-https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=test.jsp https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=TestForm.java https://gist.github.com/kght6123/7bbd58dc178afd40e0e3139f46f5a947?file=TestAction.java
+```jsp
+<%-- test.jsp --%>
+<html:form action="/test">
+  <!-- buttonタグでsubmitボタンを記述 -->
+  <button type='submit' name='action' value='send'>送信</button>
+  <button type='submit' name='action' value='save'>下書き保存</button>
+  
+  <!-- inputタグでsubmitボタンを記述 -->
+  <input type='submit' name='oldAction' value='下書き保存(旧)' />
+  
+  <html:hidden property="forwardTo" value="xxx"/>
+</form>
+```
+
+```java
+// TestForm.java
+public class TestForm extends ActionForm {
+  public String action;
+  public String forwardTo;
+  
+  public String oldAction;
+  // --- getter/setterは省略する ---
+}
+```
+
+```java
+// TestAction.java
+public class TestAction extends Action {
+  public ActionForward execute(
+      final ActionMapping mapping,
+      final ActionForm form,
+      final HttpServletRequest request,
+      final HttpServletResponse response
+  ) throws Exception {
+    final TestForm testForm = (TestForm)form;
+    
+    // buttonタグのvalueで判定
+    if("send".equals(testForm.getAction())) {
+      // 送信ボタンの処理
+      // TODO
+      return(mapping.findForward(testForm.getForwardTo()));
+    } else if("save".equals(testForm.getAction())) {
+      // 下書き保存ボタンの処理
+      // TODO
+      return(mapping.findForward(testForm.getForwardTo()));
+    }
+    
+    // inputのvalueで判定（valueが日本語のとき、日本語で判定する必要がある）
+    if("下書き保存(旧)".equals(testForm.getOldAction())) {
+      // 下書き保存ボタン(旧)の処理
+      // TODO
+      return(mapping.findForward(testForm.getForwardTo()));
+    }
+  }
+}
+```
