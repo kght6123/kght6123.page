@@ -10,4 +10,16 @@ tags:
 
 毎回、lengthでオブジェクトの有無の判定するのは冗長なので、専用の関数をJQueryに追加します。
 
-https://gist.github.com/kght6123/e48f9a1318da0a44169a5d4b806cc4f5
+```js
+// jquery-exists.js
+
+/**
+ * jQueryのSelector実行結果が存在するか判定する
+ * 	[例] 
+ * 		if ($("#id").exists()) {
+ * 		  // #idが存在するとき
+ * 		}
+ */
+jQuery.fn.exists = function(){return Boolean(this.size() > 0);}
+jQuery.fn.notExists = function(){return !this.exists();}
+```

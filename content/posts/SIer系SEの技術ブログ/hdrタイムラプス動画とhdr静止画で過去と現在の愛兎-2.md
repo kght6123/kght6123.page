@@ -32,7 +32,66 @@ Pythonの撮影処理を別プロセスにするにあたって、前回のプ�
 
 画像サイズとISO感度、露出モード、シャッタスピード、露出補正レベル、出力ファイル名を指定できる様にしました。
 
-https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=05\_capture\_picamera\_2.py
+05_capture_picamera_2.py
+```py
+import sys
+import io
+
+import cv2
+import numpy as np
+
+from time import sleep
+import picamera
+
+# execute command
+#  python3 picapture.py 1296 972 1600 'sports' 10000 -25 photo90.jpg
+#  python3 picapture.py 1296 972 1600 'sports' 20000   0 photo91.jpg
+#  python3 picapture.py 1296 972 1600 'sports' 30000  25 photo92.jpg
+
+# 引数を取得
+args = sys.argv
+
+# 撮影に関するパラメータを取得
+width = int(sys.argv[1])
+height = int(sys.argv[2])
+iso = int(sys.argv[3])
+exposure_mode = sys.argv[4]
+shutter_speed = int(sys.argv[5])
+exposure = int(sys.argv[6])
+out_file_name = sys.argv[7]
+
+sleep_time = 0.1
+
+# Create the in-memory stream
+stream = io.BytesIO()
+
+with picamera.PiCamera(resolution=(width, height)) as camera:
+  camera.drc_strength = 'high'
+  camera.exposure_mode = exposure_mode
+  camera.iso = iso
+  camera.shutter_speed = shutter_speed
+  camera.exposure_compensation = exposure # 露出補正レベル -25～25
+  camera.sharpness = 100
+  camera.awb_mode = 'auto'
+
+  # Wait
+  sleep(sleep_time)
+
+  camera.capture(stream, use_video_port=False, format='jpeg', quality=85, bayer=True, thumbnail=(64, 48, 35))
+
+  # to OpenCV
+  # Construct a numpy array from the stream
+  data = np.fromstring(stream.getvalue(), dtype=np.uint8)
+  # "Decode" the image from the array, preserving colour
+  image = cv2.imdecode(data, 1) # 0=gray,
+  # OpenCV returns an array with data in BGR order. If you want RGB instead
+  # use the following...
+  #image = image[:, :, ::-1]
+  cv2.imwrite(out_file_name, image)
+  
+  print ('ok. file='+out_file_name+',exposure='+str(camera.exposure_compensation)+',exposure_speed='+str(camera.exposure_speed))
+pass
+```
 
 シャッタースピード、ISO感度を変更しながら、撮影するPythonプログラムを呼び出すプログラムを作成しました。
 
@@ -42,7 +101,55 @@ https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=05\_captu
 
 だいたい、５枚の撮影処理に10秒ぐらいかかってます。
 
-https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=06\_call\_capture\_picamera\_2.py
+06_call_capture_picamera_2.py
+```py
+import io
+import time
+
+import cv2
+import subprocess as sp
+import numpy as np
+
+from datetime import datetime as dt
+
+# execute command
+#  python3 picapture_hdr.py
+
+start_t = time.time()
+
+# 撮影パラメータ（5回分）
+resolution = [1296, 972]
+exposure_list = [0, 0, 0, 0, 0]
+shutter_speed_list = [25000, 20000, 15000, 10000, 5000]
+exposure_mode = ['sports', 'auto', 'auto', 'auto', 'auto']
+iso_list = [1600, 800, 640, 500, 400]
+file_name = 'picture'
+ext_name = '.jpg'
+
+timelapse_frame_count = 1
+
+for i in range(timelapse_frame_count):
+  img_list = []
+  for j, exposure in enumerate(exposure_list):
+    # jpgファイル名を作成
+    file = file_name + str(j) + ext_name
+    # 撮影プログラムを呼び出すコマンドを作成
+    cmd = 'python3 05_capture_picamera_2.py ' + str(resolution[0]) + ' ' + str(resolution[1]) + ' ' \
+          + str(iso_list[j]) + ' ' \
+          + exposure_mode[j] + ' ' \
+          + str(shutter_speed_list[j]) + ' ' \
+          + str(exposure_list[j]) + ' ' \
+          + file
+    print('[' + str(i) + '][' + str(j) + '] = ' + cmd)
+    # 撮影プログラムを実行
+    sp.check_output([cmd], shell=True)
+    # 撮影された画像ファイルを読みんで、追加
+    img_list.append(cv2.imread(file))
+
+# 全体処理時間を出力
+proc_t = time.time() - start_t
+print ("finish time. {0}".format(proc_t) + "[sec]")
+```
 
 これで、HDR静止画を作るために必要な、明るさの異なる画像ファイルが撮影できる様になりました。
 

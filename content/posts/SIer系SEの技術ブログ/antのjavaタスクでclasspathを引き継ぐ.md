@@ -24,4 +24,32 @@ Antのドキュメントを調べてみると、VM引数に**"-Dbuild.sysclasspa
 
 これで、長々とJavaタスクのclasspathを書く必要がなくなりました。
 
-https://gist.github.com/kght6123/cf6b881011bd15b779df22c3c6aea13d
+```xml
+<!-- build.xml -->
+<macrodef name="single-task">
+  <attribute name="application.name" default="AntTask" />
+  <attribute name="vm.dir"/>
+  <attribute name="build.file"/>
+  <element name="build.tasks" />
+  <sequential>
+    <echo message="start @{application.name}."/>
+    
+    <!-- デバッグ情報の出力 -->
+    <property name="ant-class-path" refid="ant.class.path" />
+    <echo message="classpath = ${ant-class-path}" />
+    <echo message="tomcat.home = ${tomcat.home}" />
+    
+    <!-- javaタスクで、build.xmlを実行 -->
+    <java classname="org.apache.tools.ant.launch.Launcher" fork="true" dir="@{vm.dir}" failonerror="true">
+      <sysproperty key="ant.home" value="${ant.home}"/>
+      <arg value="-buildfile" />
+      <arg value="@{build.file}" />
+      <build.tasks />
+      <env key="TOMCAT_HOME" value="${tomcat.home}" />
+      <!-- <java cloneVm="true" /> cloneVmは、"-buildfile"オプションが無効になる -->
+      <classpath refid="ant.class.path"/>
+    </java>
+    <echo message="complete @{application.name}."/>
+  </sequential>
+</macrodef>
+```

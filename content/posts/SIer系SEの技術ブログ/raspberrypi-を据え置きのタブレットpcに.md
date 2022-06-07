@@ -69,7 +69,21 @@ AmazonでEwinミニキーボードを買った方が安いです。
 
 念のため、`config.txt`を書き換えました。
 
-https://gist.github.com/kght6123/2227b712b1530b1f8a6aeb7c7a82871c
+```sh
+# config.txtを編集
+sudo vi /boot/config.txt
+```
+
+/boot/config.txt
+```txt
+framebuffer_width=1024
+framebuffer_height=600
+hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt 1024 600 60 6 0 0 0
+config_hdmi_boost=10
+```
 
 * * *
 

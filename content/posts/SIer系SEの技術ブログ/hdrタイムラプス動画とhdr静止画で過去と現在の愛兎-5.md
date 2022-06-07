@@ -18,7 +18,28 @@ OpenCVにはアンチノイズリダクションに使えるAPIが用意され�
 
 アンチノイズ処理は、**cv2.imwrite**の手前に、下記の処理を追記することで、実現します。
 
-https://gist.github.com/kght6123/29f85cdbdd99880e84be1a0f425c65b6?file=picapture\_denoising.py
+```py
+  # HDR画像のアンチノイズリダクションが必要な場合に、
+  # 下記の処理を、picapture_hdr.pyのcv2.imwriteの直前に入れる
+  
+  # カラー画像用のノイズ除去処理を実行
+  res_mertens_8bit = \
+    cv2.fastNlMeansDenoisingColored(res_mertens_8bit, None, 2, 2, 7, 21) # 輝度を2、色を2、重みは7、加重平均は21で指定
+  
+  print('[' + str(i) + '] apply Denoising complete.')
+
+  # エッジ保存平滑化フィルタを実行（結構、重い）
+  res_mertens_8bit = \
+    cv2.edgePreservingFilter(res_mertens_8bit, None, 1, 2, 0.75) # 座標空間を 2(0〜200)、色範囲を 0.75(0～1)で指定
+
+  print('[' + str(i) + '] apply edgePreservingFilter complete.')
+
+  # 画像の鮮鋭化フィルタを実行
+  res_mertens_8bit = \
+    cv2.detailEnhance(res_mertens_8bit, None, 3, 0.75) # コントラストを 3(0〜200)、エッジを 0.75(0～1)で指定
+  
+  print('[' + str(i) + '] apply detailEnhance complete.')
+```
 
 簡単に処理を解説させていただくと、
 

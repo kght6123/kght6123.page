@@ -35,21 +35,50 @@ Tinkerboardは、[eclipse Cheの最小の要求スペック](https://www.eclipse
 
 適宜、正しいIPやホスト名に読みかえをお願い致します。
 
-## Dockerのインストール
-
-警告（dockerユーザ作れとか）出ますが、お試しなので無視します。
-
-https://gist.github.com/kght6123/d9ae1ee2cb4276a8316ed4a4b7f2954c?file=01\_install\_docker.sh
-
 ## ホストOSにeclipse Cheをインストール（＋ARM向けへ修正）
 
-Docker上での起動を諦めて、**TinkerboardのホストOSにインストール**します。
+**TinkerboardのホストOSにインストール**します。
 
 途中のsedコマンドが、**最新のeclipse Cheで置き換えに失敗**します。
 
 正しい設定に修正して、正常に置き換えています。
 
-https://gist.github.com/kght6123/d9ae1ee2cb4276a8316ed4a4b7f2954c?file=04\_install\_che.sh
+```sh
+# che本体をダウンロード
+wget https://install.codenvycorp.com/che/eclipse-che-latest.zip
+unzip eclipse-che-latest.zip
+cd eclipse-che-5.0.0
+
+# dockerイメージをarmfへ変更
+#   predefined-stacks.json -> stacks.json
+#   codenvy -> eclipse
+sed -i 's/eclipse\/ubuntu_jdk8/kartben\/armhf-che-jdk8/g' stacks/stacks.json
+sed -i 's/eclipse\/node/kartben\/armhf-che-node/g' stacks/stacks.json
+
+# 低スペック向けに起動時間を調節
+#   machine.ws_agent.max_start_time_ms -> che.workspace.agent.dev.max_start_time_ms
+sed -i 's/che.workspace.agent.dev.max_start_time_ms=180000/che.workspace.agent.dev.max_start_time_ms=240000/g' conf/che.properties
+
+# OpenJDK8をインストール
+sudo apt-get install openjdk-8-jdk # エラー
+# serverフォルダを作る（エラー回避）
+sudo ln -s /usr/lib/jvm/java-8-openjdk-armhf/jre/lib/arm/client /usr/lib/jvm/java-8-openjdk-armhf/jre/lib/arm/server
+# リトライ
+sudo apt-get install openjdk-8-jdk
+# 確認
+java -version
+
+#   Picked up JAVA_TOOL_OPTIONS: -Dgnu.io.rxtx.SerialPorts=/dev/tty96B0
+#   openjdk version "1.8.0_171"
+#   OpenJDK Runtime Environment (build 1.8.0_171-8u171-b11-1~deb9u1-b11)
+#   OpenJDK Client VM (build 25.171-b11, mixed mode)
+
+export CHE_IP=tkb.local
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
+
+# sudo実行ユーザの環境変数を引き継いで起動！
+sudo -E ./bin/che.sh run
+```
 
 [参考：\[Running Eclipse Che on a Raspberry Pi | Eclipse Foundation\]](https://blogs.eclipse.org/post/benjamin-cabé/running-eclipse-che-raspberry-pi)
 
