@@ -2,42 +2,29 @@
 
 Full-AMP の静的サイト（ブログ）がマークダウンで作れる、静的サイトジェネレーター
 
+## Getting Started
+
+Please install volta!!!
+
+https://volta.sh
+
 ## Initial Setup
 
 ```bash
 # firebase-toolsをインストール
-yarn global add firebase-tools
+npm install -g firebase-tools
 # zshの場合のみ実行する
-echo "export PATH=\"\$PATH:\`yarn global bin\`\"" >> ~/.zshrc
+echo "export PATH=\"\$PATH:\`npm bin --location=global\`\"" >> ~/.zshrc
 source ~/.zshrc
 # firebaseにログイン
 firebase login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
 # 開発モードでローカル起動
-yarn dev
+npm run dev
 # Firebaseでローカル起動
-yarn serve
+npm run serve
 # Firebaseにデプロイ
-yarn deploy
+npm run deploy
 ```
-
-## Build Setup
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
 ## Road Map
 
