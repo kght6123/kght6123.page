@@ -63,6 +63,39 @@ TypeScript で Next.js をつくるとき
 npx create-next-app kght6123.page --ts
 ```
 
+TypeScript の型ガード
+
+```
+const data: {
+    [key: string]: any;
+}
+// これのanyを型ガードでstringにして、またオブジェクトに戻す。
+
+↓
+
+const frontMatter = Object.entries(data).filter(
+  (entry): entry is [string, string] => typeof entry[1] === "string"
+  ).map(entry => { 
+    return {[entry[0]]: entry[1]}
+  });
+return {
+  frontMatter,
+  slug,
+};
+
+↓
+
+type FrontMatter = {
+  [key: string]: string;
+}
+const frontMatter = Object.entries(data).filter(
+  (entry): entry is [string, string] => typeof entry[1] === "string"
+  ).reduce((p, cv) => { 
+    p[cv[0]] = cv[1];
+    return p;
+  }, {} as FrontMatter);
+```
+
 ---
 
 ## 工夫したところ

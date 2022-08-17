@@ -2,10 +2,14 @@ import type { NextPage, GetStaticProps } from "next";
 // import Head from "next/head";
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
+import Link from 'next/link';
 import fs from 'fs';
+import matter from 'gray-matter';
+import PostCard from '../components/post-card';
+import type { Post, FrontMatter } from '../types';
 
 type Props = {
-  posts: string[]
+  posts: Post[]
 }
 
 export const getStaticProps: GetStaticProps<Props> = () => {
@@ -13,19 +17,41 @@ export const getStaticProps: GetStaticProps<Props> = () => {
   console.log('files:', files);
   // FIXME: Promise.allで効率化できそう
   const posts = files.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, '');
     const fileContent = fs.readFileSync(`posts/${fileName}`, 'utf-8');
+    const { data/*, content*/ } = matter(fileContent);
     console.log('fileContent:', fileContent);
+    console.log('slug:', slug);
+    console.log('data:', data);
+    // console.log('content:', content);
+    const frontMatter = Object.entries(data).filter(
+      (entry): entry is [string, string] => typeof entry[1] === "string"
+      ).reduce((p, cv) => { 
+        p[cv[0]] = cv[1];
+        return p;
+      }, {} as FrontMatter);
+    return {
+      frontMatter,
+      slug,
+    };
   });
   return {
     props: {
-      posts: [],
+      posts,
     },
   };
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
+  console.log('posts:', posts);
   return (
-    <div className="my-8">コンテンツ</div>
+    <div className="my-8">
+      <div className="grid grid-cols-3">
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
+    </div>
     // <div className={styles.container}>
     //   <Head>
     //     <title>Create Next App + Tailwind CSS</title>
