@@ -1,14 +1,14 @@
 ---
 marp: true
-title: 'Next.js を使った静的ブログへの移行とか'
-description: '資料の概要を書く'
+title: "Next.js を使った静的ブログへの移行とか"
+description: "資料の概要を書く"
 theme: gaia
 class: lead
 backgroundColor: #efefef
 backgroundImage: url(../images/.jpg)
 color: #334155
-header: 'Next.js を使った静的ブログへの移行とか'
-footer: '....'
+header: "Next.js を使った静的ブログへの移行とか"
+footer: "...."
 style: |
   section {
     font-family: "PlemolJP";
@@ -43,7 +43,7 @@ style: |
 ###### kght6123
 
 <!--
-
+参考文献：https://reffect.co.jp/react/nextjs-markdown-blog
 -->
 
 ---
@@ -51,13 +51,13 @@ style: |
 ## 目次(1/2)
 
 0. この資料について
-1. 
+1.
 
 ---
 
 ## ハマったところ
 
-TypeScriptでNext.jsをつくるとき
+TypeScript で Next.js をつくるとき
 
 ```sh
 npx create-next-app kght6123.page --ts
@@ -65,24 +65,38 @@ npx create-next-app kght6123.page --ts
 
 ---
 
+## 工夫したところ
+
+Prettierでフォーマットしたい
+
+```sh
+npx prettier --write . --ignore-path \".gitignore\" #手軽に最新でフォーマット（npmのscriptsにいれる）
+```
+
+FIXME: Promise.allで効率化できそう
+
+---
+
 ## 気になったところ
 
 next.config.js
 
-↓ jsなのに型補完がIDEで効く
+↓ js なのに型補完が IDE で効く
+
 ```js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 ```
 
 tailwind.config.js（`npx tailwindcss init -p`で生成される）
 
-↓ jsなのに型補完がIDEで効く
+↓ js なのに型補完が IDE で効く
+
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -91,6 +105,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
-
+};
 ```
