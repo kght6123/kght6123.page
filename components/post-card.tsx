@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import type { Post } from '../types';
+import Image from "next/image";
+import Link from "next/link";
+import type { Post } from "../types";
 
 const PostCard = ({ post }: { post: Post }) => {
   return (
-    <Link href={`/post/${post.slug}`}>
+    <Link href={`/posts/${post.slug}`}>
       <a>
         <div className="border rounded-lg">
           <Image

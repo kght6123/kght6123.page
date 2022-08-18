@@ -75,7 +75,7 @@ const data: {
 
 const frontMatter = Object.entries(data).filter(
   (entry): entry is [string, string] => typeof entry[1] === "string"
-  ).map(entry => { 
+  ).map(entry => {
     return {[entry[0]]: entry[1]}
   });
 return {
@@ -90,7 +90,7 @@ type FrontMatter = {
 }
 const frontMatter = Object.entries(data).filter(
   (entry): entry is [string, string] => typeof entry[1] === "string"
-  ).reduce((p, cv) => { 
+  ).reduce((p, cv) => {
     p[cv[0]] = cv[1];
     return p;
   }, {} as FrontMatter);
@@ -100,13 +100,13 @@ const frontMatter = Object.entries(data).filter(
 
 ## 工夫したところ
 
-Prettierでフォーマットしたい
+Prettier でフォーマットしたい
 
 ```sh
 npx prettier --write . --ignore-path \".gitignore\" #手軽に最新でフォーマット（npmのscriptsにいれる）
 ```
 
-FIXME: Promise.allで効率化できそう
+FIXME: Promise.all で効率化できそう
 
 ---
 

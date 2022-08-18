@@ -2,51 +2,49 @@ import type { NextPage, GetStaticProps } from "next";
 // import Head from "next/head";
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
-import Link from 'next/link';
-import fs from 'fs';
-import matter from 'gray-matter';
-import PostCard from '../components/post-card';
-import type { Post, FrontMatter } from '../types';
+import Link from "next/link";
+import fs from "fs";
+import matter from "gray-matter";
+import PostCard from "../components/post-card";
+import type { Post, FrontMatter } from "../types";
+import { convertFrontMatter } from "../src/utility";
 
 type Props = {
-  posts: Post[]
-}
+  posts: Post[];
+};
 
 export const getStaticProps: GetStaticProps<Props> = () => {
-  const files = fs.readdirSync('posts');
-  console.log('files:', files);
+  const files = fs.readdirSync("posts");
+  console.log("files:", files);
   // FIXME: Promise.allで効率化できそう
   const posts = files.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, '');
-    const fileContent = fs.readFileSync(`posts/${fileName}`, 'utf-8');
-    const { data/*, content*/ } = matter(fileContent);
-    console.log('fileContent:', fileContent);
-    console.log('slug:', slug);
-    console.log('data:', data);
+    const slug = fileName.replace(/\.md$/, "");
+    const fileContent = fs.readFileSync(`posts/${fileName}`, "utf-8");
+    const { data /*, content*/ } = matter(fileContent);
+    console.log("fileContent:", fileContent);
+    console.log("slug:", slug);
+    console.log("data:", data);
     // console.log('content:', content);
-    const frontMatter = Object.entries(data).filter(
-      (entry): entry is [string, string] => typeof entry[1] === "string"
-      ).reduce((p, cv) => { 
-        p[cv[0]] = cv[1];
-        return p;
-      }, {} as FrontMatter);
     return {
-      frontMatter,
+      frontMatter: convertFrontMatter(data),
       slug,
     };
   });
+  const sortedPosts = posts.sort((postA, postB) =>
+    new Date(postA.frontMatter.date) > new Date(postB.frontMatter.date) ? -1 : 1
+  );
   return {
     props: {
-      posts,
+      posts: sortedPosts,
     },
   };
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log('posts:', posts);
+  console.log("posts:", posts);
   return (
     <div className="my-8">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 gap-4">
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
