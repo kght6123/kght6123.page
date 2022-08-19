@@ -3,6 +3,7 @@ title: "Next.jsでmarkdownブログを構築"
 date: "2022-07-14"
 description: "Next.jsでmarkdownファイルを利用したブログの構築手順を解説しています。"
 image: nextjs.png
+categories: ['laravel']
 ---
 
 ## 目次

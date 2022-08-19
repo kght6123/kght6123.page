@@ -11,7 +11,7 @@ const PostCard = ({ post }: { post: Post }) => {
             src={`/${post.frontMatter.image}`}
             width={1200}
             height={700}
-            alt={post.frontMatter.title}
+            alt={typeof post.frontMatter.title === "string" ? post.frontMatter.title : "タイトルがありません"}
           />
         </div>
         <div className="px-2 py-4">

@@ -51,7 +51,7 @@ style: |
 ## 参考文献のメモ
 
 続きはここから↓
-https://reffect.co.jp/react/nextjs-markdown-blog#aLink
+https://reffect.co.jp/react/nextjs-markdown-blog#Pagination
 
 ---
 

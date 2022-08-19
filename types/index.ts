@@ -1,8 +1,9 @@
 export type FrontMatter = {
-  [key: string]: string;
+  [key: string]: string | string[];
 };
 export type Post = {
   frontMatter: FrontMatter;
-  slug: string;
+  slug?: string;
   content?: string;
+  toc?: string;
 };

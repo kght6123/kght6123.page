@@ -1,6 +1,4 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
-import fs from 'fs';
-import matter from 'gray-matter';
 import PostCard from '../../components/post-card';
 import type { Post } from "../../types";
 import { findPosts } from "../../src/utility";
@@ -18,9 +16,8 @@ export const getStaticProps: GetStaticProps<Props> = ({ params }) => {
       const filteredPosts = posts.filter((post) => {
         return post.frontMatter.categories.includes(category);
       });
-      const sortedPosts = filteredPosts.sort((postA, postB) =>
-        new Date(postA.frontMatter.date) > new Date(postB.frontMatter.date) ? -1 : 1
-      );
+      // TODO: 下のtypeofもtypeによる型ガードにする
+      const sortedPosts = filteredPosts.sort((postA, postB) => typeof postA.frontMatter.date === "string" && postB.frontMatter.date === "string" ? new Date(postA.frontMatter.date) > new Date(postB.frontMatter.date) ? -1 : 1 : 0);
       return {
         props: {
           posts: sortedPosts,

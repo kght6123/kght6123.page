@@ -18,6 +18,7 @@ import remarkPrism from 'remark-prism';
 import { createElement, Fragment } from 'react';
 import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
+import { toc } from 'mdast-util-toc';
 
 type Props = {
   post: Post;
@@ -64,6 +65,18 @@ const toReactNode = (content: string) => {
     .processSync(content).result;
 };
 
+const getToc = (options?: void | import('mdast-util-toc/lib').Options | undefined):
+| void
+| import('unified').Transformer<import('mdast').Root, import('mdast').Root> => {
+  return (node) => {
+    if (typeof options === "object") {
+      const result = toc(node, options);
+      if (result.map != null)
+        node.children = [result.map];
+    }
+  };
+};
+
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   console.log("params:", params);
   if (params !== undefined) {
@@ -81,6 +94,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         .use(remarkToc, {
           heading: '目次',
         })
+        // FIXME: なぜか目次を有効にするとコンテンツが消えて、目次が表示されない
+        // .use(getToc, {
+        //   heading: '目次',
+        //   tight: true,
+        // })
         .use(remarkRehype, { allowDangerousHtml: true })
         .use(rehypeSlug)
         .use(rehypeStringify, { allowDangerousHtml: true })
@@ -92,6 +110,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
           post: {
             frontMatter: convertFrontMatter(data),
             content: result.toString(),
+            toc: toc.toString(),
             slug,
           },
         },
@@ -102,7 +121,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     props: {
       post: {
         frontMatter: {},
-        slug: "",
+        slug: undefined,
+        toc: undefined,
       },
     },
   };
@@ -123,57 +143,78 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 const Post: NextPage<Props> = ({ post }) => {
-  const { frontMatter, content, slug } = post
-  return (
-    <>
-      <NextSeo
-        title={frontMatter.title}
-        description={frontMatter.description}
-        openGraph={{
-          type: 'website',
-          url: `http:localhost:3000/posts/${slug}`,
-          title: frontMatter.title,
-          description: frontMatter.description,
-          images: [
-            {
-              url: `https://localhost:3000/${frontMatter.image}`,
-              width: 1200,
-              height: 700,
-              alt: frontMatter.title,
-            },
-          ],
-        }}
-      />
-      <div className="prose prose-lg max-w-none">
-        <div className="border">
-          <Image
-            src={`/${frontMatter.image}`}
-            width={1200}
-            height={700}
-            alt={frontMatter.title}
-          />
+  const { frontMatter, content, slug, toc } = post
+  // TODO: typeによる型ガードにする↓
+  if (
+    typeof frontMatter.title === "string"
+     && typeof frontMatter.description === "string"
+     && typeof frontMatter.categories === "object") {
+      // titleとdescriptionはstring以外はありえない
+    return (
+      <>
+        <NextSeo
+          title={frontMatter.title}
+          description={frontMatter.description}
+          openGraph={{
+            type: 'website',
+            url: `http:localhost:3000/posts/${slug}`,
+            title: frontMatter.title,
+            description: frontMatter.description,
+            images: [
+              {
+                url: `https://localhost:3000/${frontMatter.image}`,
+                width: 1200,
+                height: 700,
+                alt: frontMatter.title,
+              },
+            ],
+          }}
+        />
+        <div className="prose prose-lg max-w-none">
+          <div className="border">
+            <Image
+              src={`/${frontMatter.image}`}
+              width={1200}
+              height={700}
+              alt={frontMatter.title}
+            />
+          </div>
+          <h1 className="mt-12">{frontMatter.title}</h1>
+          <span>{frontMatter.date}</span>
+          <div className="space-x-2">
+          {frontMatter.categories.map((category) => (
+            <span key={category}>
+              <Link href={`/categories/${category}`}>
+                <a>{category}</a>
+              </Link>
+            </span>
+          ))}
+          </div>
+          <div className="grid grid-cols-12">
+            {typeof content === "string" ? (
+                <div className="col-span-9">{toReactNode(content)}</div>
+              ) : (
+                <div className="col-span-9">記事のコンテンツは存在しません</div>
+              )
+            }
+            {typeof toc === "string" ? (
+                <div className="col-span-3">
+                  <div
+                    className="sticky top-[50px]"
+                    dangerouslySetInnerHTML={{ __html: toc }}
+                  ></div>
+                </div>
+              ) : (
+                <div className="col-span-3">目次なし</div>
+              )
+            }
+          </div>
         </div>
-        <h1 className="mt-12">{frontMatter.title}</h1>
-        <span>{frontMatter.date}</span>
-        <div className="space-x-2">
-        {/* {frontMatter.categories.map((category) => (
-          <span key={category}>
-            <Link href={`/categories/${category}`}>
-              <a>{category}</a>
-            </Link>
-          </span>
-        ))} */}
-        </div>
-        {typeof content === "string" ? (
-            // <div dangerouslySetInnerHTML={{ __html: content }}></div>
-            toReactNode(content)
-          ) : (
-            <div>コンテンツ存在しません</div>
-          )
-        }
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return <div>記事は存在しません</div>;
+  }
 };
 
 export default Post;
