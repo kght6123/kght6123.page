@@ -3,6 +3,7 @@ title: "Next.jsでmarkdownブログを構築"
 date: "2022-07-13"
 description: "Next.jsでmarkdownファイルを利用したブログの構築手順を解説しています。"
 image: nextjs.png
+categories: ['react']
 ---
 
 ## 目次
@@ -33,3 +34,5 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 ```
+
+<img src="http://localhost:3000/200TSURUTAMA20211_TP_V4.jpg" alt="さんぷるの画像" width="800" height="533" />

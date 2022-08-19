@@ -103,6 +103,67 @@ const frontMatter = Object.entries(data).filter(
   }, {} as FrontMatter);
 ```
 
+TypeScriptの型のインポート
+
+もともとのサンプルコード、propsの型を独自で定義していた
+```
+const CustomLink = ({
+  children,
+  href,
+}: {
+  children: string;
+  href: string;
+}): JSX.Element =>
+  href.startsWith('/') || href === '' ? (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
+  ) : (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+
+const CustomImage = ({
+  src,
+  alt,
+}: {
+  src: string;
+  alt?: string | undefined;
+}): JSX.Element =>
+  <Image src={src} alt={alt} width="1200" height="700" />;
+```
+
+用意されている、ImagePropsやLinkPropsの型を使うように
+
+```
+const CustomImage = ({
+  src,
+  alt,
+}: ImageProps): JSX.Element =>
+  <Image src={src} alt={alt} width="1200" height="700" />;
+```
+
+```
+const CustomLink = ({
+  children,
+  href,
+}: LinkProps & {
+  children?: React.ReactNode; // next/linkのコードを見ると交差型で定義されているのでここもそんな感じに
+}): JSX.Element =>
+  href.toString().startsWith('/') || href === '' ? (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
+  ) : (
+    <a href={href.toString()} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+```
+
+交差型でLinkPropsを使うように
+
 ---
 
 ## 工夫したところ

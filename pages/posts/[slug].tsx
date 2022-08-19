@@ -1,6 +1,8 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
+import type { ImageProps } from "next/image";
 import Link from 'next/link';
+import type { LinkProps } from "next/link";
 import fs from "fs";
 import matter from "gray-matter";
 import { unified } from 'unified';
@@ -21,6 +23,29 @@ type Props = {
   post: Post;
 };
 
+const CustomLink = ({
+  children,
+  href,
+}: LinkProps & {
+  children?: React.ReactNode;
+}): JSX.Element =>
+  href.toString().startsWith('/') || href === '' ? (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
+  ) : (
+    <a href={href.toString()} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+
+const CustomImage = ({
+  src,
+  alt,
+  ...prop
+}: ImageProps): JSX.Element =>
+  <Image src={src} alt={alt} width="1200" height="700" {...prop} />;
+
 const toReactNode = (content: string) => {
   // Server側でReactNodeへの変換が行われる
   // Client側でやりたい場合は、https://reffect.co.jp/react/nextjs-markdown-blog#useEffect_useState で実装する
@@ -31,6 +56,10 @@ const toReactNode = (content: string) => {
     .use(rehypeReact, {
       createElement,
       Fragment,
+      components: {
+        a: (props: any) => <CustomLink {...props} />,
+        img: (props: any) => <CustomImage {...props} />,
+      },
     })
     .processSync(content).result;
 };
@@ -39,7 +68,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   console.log("params:", params);
   if (params !== undefined) {
     const { slug } = params;
-    const file = fs.readFileSync(`posts/${params.slug}.md`, "utf-8");
+    const file = fs.readFileSync(`posts/${slug}.md`, "utf-8");
     console.log(file);
     const { data, content } = matter(file);
     if (typeof slug === "string") {
@@ -52,9 +81,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         .use(remarkToc, {
           heading: '目次',
         })
-        .use(remarkRehype)
+        .use(remarkRehype, { allowDangerousHtml: true })
         .use(rehypeSlug)
-        .use(rehypeStringify)
+        .use(rehypeStringify, { allowDangerousHtml: true })
         .process(content);
       console.log('result:',result);
       console.log('html:', result.toString());
@@ -126,6 +155,15 @@ const Post: NextPage<Props> = ({ post }) => {
         </div>
         <h1 className="mt-12">{frontMatter.title}</h1>
         <span>{frontMatter.date}</span>
+        <div className="space-x-2">
+        {/* {frontMatter.categories.map((category) => (
+          <span key={category}>
+            <Link href={`/categories/${category}`}>
+              <a>{category}</a>
+            </Link>
+          </span>
+        ))} */}
+        </div>
         {typeof content === "string" ? (
             // <div dangerouslySetInnerHTML={{ __html: content }}></div>
             toReactNode(content)
