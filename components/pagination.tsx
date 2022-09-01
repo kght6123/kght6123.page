@@ -4,12 +4,12 @@ export default function Pagination({
 	pages,
 	current_page = 1,
 }: {
-	pages: number[];
-	current_page: number;
+	pages?: number[];
+	current_page?: number;
 }) {
   return (
     <div className={`flex items-center space-x-1 mt-8`}>
-      {pages.map((page) => (
+      {pages !== undefined ? pages.map((page) => (
         <Link href={`/page/${page}`} key={page}>
           <a
             className={`px-4 py-2 border hover:bg-black hover:text-white ${
@@ -19,7 +19,7 @@ export default function Pagination({
             {page}
           </a>
         </Link>
-      ))}
+      )) : undefined}
     </div>
   );
 };

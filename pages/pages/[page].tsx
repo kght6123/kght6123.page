@@ -1,8 +1,10 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
+import Pagination from '../../components/pagination';
+import PostCard from '../../components/post-card';
 import type { Post } from "../../types";
 import { findPosts } from "../../src/utility";
-//略
+
 const PAGE_SIZE = 2;
 
 type Props = {
@@ -11,6 +13,7 @@ type Props = {
   current_page?: number;
 };
 
+// FIXME: index.tsxにある関数と共通化したい
 const range = (start: number, end: number, length = end - start + 1) =>
   Array.from({ length }, (_, i) => start + i);
 
@@ -53,3 +56,18 @@ export const getStaticProps: GetStaticProps<Props> = ({ params }) => {
     },
   };
 }
+
+const Page: NextPage<Props> = ({ posts, pages, current_page }) => {
+  return (
+    <div className="my-8">
+      <div className="grid grid-cols-3 gap-4">
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
+      <Pagination pages={pages} current_page={current_page} />
+    </div>
+  );
+};
+
+export default Page;

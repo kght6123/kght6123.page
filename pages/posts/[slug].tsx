@@ -73,6 +73,10 @@ const getToc = (options?: void | import('mdast-util-toc/lib').Options | undefine
       const result = toc(node, options);
       if (result.map != null)
         node.children = [result.map];
+      else
+        console.error("result.map null error");
+    } else {
+      console.error("options is not supported");
     }
   };
 };
@@ -94,15 +98,21 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         .use(remarkToc, {
           heading: '目次',
         })
-        // FIXME: なぜか目次を有効にするとコンテンツが消えて、目次が表示されない
-        // .use(getToc, {
-        //   heading: '目次',
-        //   tight: true,
-        // })
         .use(remarkRehype, { allowDangerousHtml: true })
         .use(rehypeSlug)
         .use(rehypeStringify, { allowDangerousHtml: true })
         .process(content);
+      
+      const toc = await unified()
+        .use(remarkParse)
+        .use(getToc, {
+          heading: '目次',
+          tight: true,
+        })
+        .use(remarkRehype)
+        .use(rehypeStringify)
+        .process(content);
+      
       console.log('result:',result);
       console.log('html:', result.toString());
       return {
