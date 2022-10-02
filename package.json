@@ -7,9 +7,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "nuxt generate && firebase deploy",
+    "deploy": "nuxt generate && npx firebase-tools deploy",
     "login": "npx firebase-tools login",
-    "serve": "nuxt generate && firebase serve --only hosting"
+    "serve": "nuxt generate && npx firebase-tools serve --only hosting"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
