@@ -2,8 +2,8 @@
 sortNo: 21
 title: モダンなKtorアプリ開発のススメ！
 description: '仕事で必要そうなのでメモメモです！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png',872,533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png',872,533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg',872,533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg',872,533]
 tags: ['Ktor','Tailwind CSS']
 disabled: true
 ---

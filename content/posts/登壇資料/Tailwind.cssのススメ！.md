@@ -2,8 +2,8 @@
 sortNo: 20
 title: Tailwind CSSのススメ！
 description: '某LT会で11/24に登壇した時の資料です！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['CSS', 'Tailwind CSS']
 ---
 

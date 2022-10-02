@@ -2,8 +2,8 @@
 sortNo: 22
 title: Nuxt.js と ElementUI、 Tailwind CSS、 StoryBook、Jest で新規プロダクトの開発を始めてみた
 description: 'Tailwind CSS を、他の UI フレームワークと連携して導入したいと考えている方へ！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['CSS', 'Tailwind CSS', 'Nuxt.js', 'ElementUI','StoryBook','Jest']
 ---
 

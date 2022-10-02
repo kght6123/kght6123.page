@@ -9,7 +9,10 @@
       type="slides"
       class="m-0"
     >
-      <a
+      <amp-img src="/images/top1.jpg" layout="fixed-height" height="600"></amp-img>
+      <amp-img src="/images/top2.jpg" layout="fixed-height" height="600"></amp-img>
+      <amp-img src="/images/top3.jpg" layout="fixed-height" height="600"></amp-img>
+      <!-- <a
         href="https://booth.pm/ja/items/3039023"
         target="_blank"
         rel="noopener noreferrer"
@@ -20,7 +23,7 @@
           width="960"
           height="600"
         ></amp-img>
-      </a>
+      </a> -->
     </amp-carousel>
 
     <ul v-if="tags" class="px-2 pt-2 mt-1">

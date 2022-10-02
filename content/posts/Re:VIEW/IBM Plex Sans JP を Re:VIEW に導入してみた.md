@@ -2,8 +2,8 @@
 sortNo: 26
 title: IBM Plex Sans JP を Re:VIEW に導入してみた
 description: 'いい感じのカスタムフォントを使ってみたいと考えている方へ！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['RE:VIEW']
 ---
 IBM 社から、Plex フォントの日本語対応版の IBM Plex Sans JP が公開されました。

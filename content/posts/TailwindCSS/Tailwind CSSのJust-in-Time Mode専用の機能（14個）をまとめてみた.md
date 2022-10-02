@@ -2,8 +2,8 @@
 sortNo: 25
 title: Tailwind CSSのJust-in-Time Mode専用の機能（14個）をまとめてみた
 description: 'Just-in-Time Mode を、さらに活用したいと考えている方へ！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['CSS', 'Tailwind CSS']
 ---
 Tailwind CSS v2.1.0 で、 Just-in-Time Mode が新しく導入されました。

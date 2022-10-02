@@ -75,6 +75,18 @@ a {
   @apply text-sm;
 }
 
+blockquote p::before {
+  content: "> ";
+}
+
+blockquote {
+  @apply px-3 py-1 italic bg-gray-800;
+}
+
+p > code {
+  @apply px-2 py-1 font-bold bg-gray-800 mx-2;
+}
+
 svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
   overflow: visible;
   box-sizing: content-box;

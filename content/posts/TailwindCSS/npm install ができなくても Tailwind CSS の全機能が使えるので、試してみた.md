@@ -2,8 +2,8 @@
 sortNo: 24
 title: npm install ができなくても Tailwind CSS の全機能が使えるので、試してみた
 description: '既存の静的サイトなどに、爆速の Tailwind CSS を導入したいと考えている方へ！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['CSS', 'Tailwind CSS']
 ---
 Tailwind CSS v2.2.0 で、 Tailwind CLI が新しく導入されました。

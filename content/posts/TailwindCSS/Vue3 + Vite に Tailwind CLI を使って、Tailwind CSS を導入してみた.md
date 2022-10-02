@@ -2,8 +2,8 @@
 sortNo: 23
 title: Vue3 + Vite に Tailwind CLI を使って、Tailwind CSS を導入してみた
 description: 'Vue3 に、爆速の Tailwind CSS を導入したいと考えている方へ！'
-eyecatchImage: ['/images/posts/tailwindcss-logo.png', 872, 533]
-thumbnailImage: ['/images/posts/sm/tailwindcss-logo.png', 872, 533]
+eyecatchImage: ['/images/posts/8GjuBNnF.jpeg', 872, 533]
+thumbnailImage: ['/images/posts/sm/8GjuBNnF.jpeg', 872, 533]
 tags: ['CSS', 'Tailwind CSS', 'Vue3', 'Vite']
 ---
 Tailwind CSS v2.2.0 で、 Tailwind CLI が新しく導入されました。
