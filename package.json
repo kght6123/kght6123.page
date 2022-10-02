@@ -8,6 +8,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "deploy": "nuxt generate && firebase deploy",
+    "login": "npx firebase-tools login",
     "serve": "nuxt generate && firebase serve --only hosting"
   },
   "dependencies": {

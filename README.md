@@ -1,6 +1,6 @@
 # kght6123.page
 
-Full-AMP の静的サイト（ブログ）がマークダウンで作れる、静的サイトジェネレーター
+nuxt.jsを使って Full-AMP のブログがマークダウンで作れるプロジェクト（コンテンツは個人ブログの内容が入ってます）
 
 ## Getting Started
 
@@ -11,13 +11,8 @@ https://volta.sh
 ## Initial Setup
 
 ```bash
-# firebase-toolsをインストール
-npm install -g firebase-tools
-# zshの場合のみ実行する
-echo "export PATH=\"\$PATH:\`npm bin --location=global\`\"" >> ~/.zshrc
-source ~/.zshrc
 # firebaseにログイン
-firebase login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
+npm run login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
 # 開発モードでローカル起動
 npm run dev
 # Firebaseでローカル起動
