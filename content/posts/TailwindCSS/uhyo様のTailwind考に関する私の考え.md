@@ -167,7 +167,7 @@ Tailwind CSSは確かにESLintのようなものだと私も思います。私�
 Tailwind CSSはそのままのCSSを自由に使ってしまう場合に比べれば、特にチーム開発においてはESLintの役割と同じようにフレームワークのルールで制限してUIを開発しやすくしてくれると感じます。
 その結果、今までのCSSの苦しかった部分を解決してくれて、CSSに集中できるのでCSSを楽しくしてくれていると感じます。
 
-[GitHubで見る]()
+[GitHubで記事を見る](https://github.com/kght6123/kght6123.page/blob/master/content/posts/TailwindCSS/uhyo様のTailwind考に関する私の考え.md)
 
 ## 引用元させていただいたブログ
 
