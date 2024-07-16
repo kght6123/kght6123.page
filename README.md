@@ -13,6 +13,8 @@ https://volta.sh
 ```bash
 # firebaseにログイン
 npm run login # 表示されたURLをブラウザで開いて、FirebaseのプロジェクトにアクセスできるGoogleアカウントでログインする
+# インストール
+npm i
 # 開発モードでローカル起動
 npm run dev
 # Firebaseでローカル起動

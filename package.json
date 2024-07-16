@@ -7,9 +7,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "nuxt generate && npx firebase-tools deploy",
-    "login": "npx firebase-tools login",
-    "serve": "nuxt generate && npx firebase-tools serve --only hosting"
+    "deploy": "nuxt generate && npx firebase-tools@12.9.1 deploy",
+    "login": "npx firebase-tools@12.9.1 login",
+    "serve": "nuxt generate && npx firebase-tools@12.9.1 serve --only hosting"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
@@ -32,6 +32,6 @@
     "tailwindcss": "^2.2.7"
   },
   "volta": {
-    "node": "16.15.1"
+    "node": "16.20.2"
   }
 }
